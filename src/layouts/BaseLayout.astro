@@ -18,27 +18,109 @@ const { title, description, canonical } = Astro.props;
   <SEO title={title} description={description} canonical={canonical} />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>tailwind.config={theme:{extend:{colors:{crimson:{50:'#fef2f2',100:'#fee2e2',200:'#fecaca',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d'}}}}};</script>
+  <style>
+    /* Wiki-style info boxes */
+    .info-box { background: linear-gradient(135deg, #1e293b, #0f172a); border-left: 4px solid #3b82f6; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .tip-box { background: linear-gradient(135deg, #064e3b20, #022c2220); border: 1px solid #065f46; border-left: 4px solid #10b981; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .warn-box { background: linear-gradient(135deg, #78350f20, #451a0320); border: 1px solid #92400e; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .danger-box { background: linear-gradient(135deg, #7f1d1d20, #450a0a20); border: 1px solid #991b1b; border-left: 4px solid #ef4444; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+
+    /* Table of contents */
+    .toc { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .toc-title { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 0.75rem; }
+    .toc ol { list-style: decimal; padding-left: 1.25rem; }
+    .toc li { margin-bottom: 0.4rem; }
+    .toc a { color: #93c5fd; text-decoration: none; font-size: 0.92rem; }
+    .toc a:hover { color: #60a5fa; text-decoration: underline; }
+
+    /* Sidebar */
+    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border-radius: 8px; color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: all 0.15s; }
+    .sidebar-link:hover { background: #1f2937; color: #e5e7eb; }
+    .sidebar-link.active { background: #dc262610; color: #f87171; font-weight: 600; }
+
+    /* Stat grid */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.5rem; }
+    .stat-item { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 0.75rem 1rem; text-align: center; }
+    .stat-value { font-size: 1.2rem; font-weight: 700; color: white; }
+    .stat-label { font-size: 0.75rem; color: #6b7280; margin-top: 0.15rem; }
+
+    /* Tier badges */
+    .tier-s { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1a1a1a; }
+    .tier-a { background: linear-gradient(135deg, #34d399, #10b981); color: #1a1a1a; }
+    .tier-b { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; }
+    .tier-c { background: linear-gradient(135deg, #9ca3af, #6b7280); color: white; }
+    .tier-d { background: linear-gradient(135deg, #f87171, #ef4444); color: white; }
+
+    /* Article typography */
+    article h2 { font-size: 1.5rem; font-weight: 800; color: #f1f5f9; margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1f2937; }
+    article h3 { font-size: 1.1rem; font-weight: 700; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
+    article p { margin-bottom: 0.75rem; line-height: 1.75; }
+    article ul, article ol { margin-bottom: 1rem; padding-left: 1.25rem; }
+    article li { margin-bottom: 0.3rem; line-height: 1.65; }
+    article code { background: #1e293b; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
+    article strong { color: #e5e7eb; }
+
+    /* Mobile sidebar */
+    @media (max-width: 768px) {
+      .wiki-layout { display: block !important; }
+      .sidebar { display: none; }
+      .sidebar.open { display: block; }
+    }
+  </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen antialiased">
-  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-20">
-    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
-      <a href="/" class="text-lg font-bold text-white">Vampire<span class="text-red-500">Crawlers</span>.cc</a>
-      <nav class="flex gap-4 sm:gap-6 text-sm font-medium text-gray-400">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
-        <a href="/guides/beginners-guide" class="hover:text-white transition-colors">Beginner's Guide</a>
-        <a href="/guides/best-builds" class="hover:text-white transition-colors">Best Builds</a>
-        <a href="/guides/cards-tier-list" class="hover:text-white transition-colors">Cards</a>
-      </nav>
+<body class="bg-gray-950 text-gray-300 antialiased">
+  <!-- Top bar -->
+  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <a href="/" class="text-lg font-extrabold text-white hover:text-red-400 transition-colors">Vampire<span class="text-red-500">Crawlers</span>.cc</a>
+        <nav class="hidden md:flex gap-1 text-sm">
+          <a href="/" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Home</a>
+          <a href="/guides/beginners-guide" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Beginner</a>
+          <a href="/guides/best-builds" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Builds</a>
+          <a href="/guides/cards-tier-list" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Cards</a>
+          <a href="/guides/boss-guide" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Bosses</a>
+        </nav>
+      </div>
+      <button id="menu-btn" class="md:hidden text-gray-400 hover:text-white text-2xl">&#9776;</button>
     </div>
   </header>
 
-  <main><slot /></main>
+  <!-- Main layout: sidebar + content -->
+  <div class="max-w-7xl mx-auto px-4 py-6 wiki-layout" style="display:grid;grid-template-columns:220px 1fr;gap:2rem;">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sticky top-20 space-y-1">
+        <p class="text-xs font-semibold uppercase text-gray-500 tracking-wider mb-2 px-2">Guides</p>
+        <a href="/" class="sidebar-link">🏠 Home</a>
+        <a href="/guides/beginners-guide" class="sidebar-link">🎓 Beginner's Guide</a>
+        <a href="/guides/best-builds" class="sidebar-link">⚔️ Best Builds</a>
+        <a href="/guides/cards-tier-list" class="sidebar-link">🃏 Cards Tier List</a>
+        <a href="/guides/card-combos" class="sidebar-link">🔗 Card Combos</a>
+        <a href="/guides/boss-guide" class="sidebar-link">💀 Boss Guide</a>
+        <a href="/guides/characters-guide" class="sidebar-link">👤 Characters</a>
+        <a href="/guides/unlock-characters" class="sidebar-link">🔓 Unlock Characters</a>
+        <a href="/guides/relics-guide" class="sidebar-link">💎 Relics Guide</a>
+        <a href="/guides/elements-guide" class="sidebar-link">🔥 Elements Guide</a>
+        <a href="/guides/endless-mode" class="sidebar-link">♾️ Endless Mode</a>
+        <a href="/guides/faq" class="sidebar-link">❓ FAQ</a>
+      </div>
+    </aside>
 
-  <footer class="border-t border-gray-800 mt-12">
-    <div class="max-w-6xl mx-auto px-4 py-8 text-center text-sm text-gray-500">
-      <p>Vampire Crawlers Guide &mdash; Unofficial fan site. Not affiliated with poncle.</p>
-      <p class="mt-1">&copy; 2026 VampCrawlers.cc</p>
+    <!-- Content area -->
+    <main class="min-w-0"><slot /></main>
+  </div>
+
+  <footer class="border-t border-gray-800 mt-8">
+    <div class="max-w-7xl mx-auto px-4 py-8 text-center text-sm text-gray-600">
+      <p>Vampire Crawlers Guide &mdash; Unofficial fan resource. Not affiliated with poncle.</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('menu-btn')?.addEventListener('click', () => {
+      document.getElementById('sidebar')?.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

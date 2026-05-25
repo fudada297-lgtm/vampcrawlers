@@ -1,92 +1,101 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const title = 'Vampire Crawlers Beginner\'s Guide — Tips, Tricks & Getting Started (2026)';
-const description = 'Complete beginner\'s guide to Vampire Crawlers. Learn the basics: how cards work, combat mechanics, early game strategy, unlocking characters, and surviving your first runs.';
+const title = 'Vampire Crawlers Beginner\'s Guide — Tips & Getting Started (2026)';
+const description = 'Complete beginner guide to Vampire Crawlers. Learn basics, combat, deckbuilding, early game strategy, and how to survive your first runs.';
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/beginners-guide">
-  <script type="application/ld+json" set:html={`{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Vampire Crawlers Beginner's Guide",
-    "description": "${description}",
-    "datePublished": "2026-05-23"
-  }`} />
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Beginner's Guide</h1>
+    <p class="text-gray-500 mb-6">Everything new players need — from first card to first victory.</p>
 
-  <article class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Beginner's Guide</h1>
-    <p class="text-gray-400 mb-8">Everything new players need to know to survive and thrive in poncle's roguelike deckbuilder.</p>
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#what-is">What Is Vampire Crawlers?</a></li>
+        <li><a href="#basics">Getting Started: The Basics</a></li>
+        <li><a href="#early-game">Early Game Strategy</a></li>
+        <li><a href="#bloodfang">First Character: Bloodfang</a></li>
+        <li><a href="#mistakes">Common Beginner Mistakes</a></li>
+      </ol>
+    </div>
 
-    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6 space-y-5 text-gray-300 leading-relaxed">
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">What Is Vampire Crawlers?</h2>
-        <p>Vampire Crawlers is a roguelike deckbuilder action game by poncle (creators of Vampire Survivors). Released in April 2026, it merges card-based combat with bullet heaven mechanics. You build a deck of cards, each representing attacks, defenses, or abilities, and fight through waves of enemies in procedurally generated dungeons.</p>
-      </section>
+    <h2 id="what-is">What Is Vampire Crawlers?</h2>
+    <p>Vampire Crawlers is a roguelike deckbuilder action game from <strong>poncle</strong> (creators of Vampire Survivors). Released April 2026, it merges card-based combat with bullet heaven survivor mechanics. You build a deck, fight through procedurally generated dungeons, and progressively unlock new cards, characters, and relics.</p>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">Getting Started: The Basics</h2>
+    <div class="info-box">
+      <strong>Key Difference from Vampire Survivors</strong>: In Vampire Crawlers, you actively play cards rather than relying on auto-attacks. This makes positioning, card timing, and deck management critical skills.
+    </div>
 
-        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">1. Understanding Cards</h3>
-        <p>Cards are your primary tool in Vampire Crawlers. Each card has:</p>
-        <ul class="list-disc pl-5 space-y-1 mt-2">
-          <li><strong>Energy Cost</strong> — How much energy it takes to play the card. You regenerate energy over time.</li>
-          <li><strong>Effect</strong> — What the card does: deal damage, heal, summon minions, apply buffs/debuffs.</li>
-          <li><strong>Element</strong> — Fire, Ice, Shadow, Blood, or Lightning. Elemental synergies are critical for advanced builds.</li>
-          <li><strong>Rarity</strong> — Common, Uncommon, Rare, Epic, Legendary. Higher rarity = more powerful effects.</li>
-        </ul>
+    <h2 id="basics">Getting Started: The Basics</h2>
 
-        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">2. Combat Flow</h3>
-        <p>Combat is real-time. Enemies spawn in waves, and you play cards to defeat them while dodging their attacks. Your deck cycles automatically — when you run out of cards, it reshuffles. Key combat tips:</p>
-        <ul class="list-disc pl-5 space-y-1 mt-2">
-          <li>Don't hoard cards — play them as soon as you have energy</li>
-          <li>Keep moving — standing still gets you killed</li>
-          <li>Watch enemy attack patterns — most are telegraphed with red indicators</li>
-        </ul>
+    <h3>1. Understanding Cards</h3>
+    <p>Cards are your primary tool. Each card has:</p>
+    <ul>
+      <li><strong>Energy Cost</strong> — Playing a card costs energy. Energy regenerates over time.</li>
+      <li><strong>Effect</strong> — Damage, healing, summon, buff, or debuff.</li>
+      <li><strong>Element</strong> — Blood (lifesteal), Frost (freeze), Shadow (crit/burst), Lightning (AoE/speed).</li>
+      <li><strong>Rarity</strong> — Common → Uncommon → Rare → Epic → Legendary.</li>
+    </ul>
 
-        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">3. The Dungeon Crawl Loop</h3>
-        <p>Each run consists of multiple floors. Clear a floor to advance. Between floors, you can:</p>
-        <ul class="list-disc pl-5 space-y-1 mt-2">
-          <li><strong>Pick new cards</strong> to add to your deck</li>
-          <li><strong>Upgrade existing cards</strong> at the Forge</li>
-          <li><strong>Heal</strong> at Blood Altars (costs gold)</li>
-          <li><strong>Buy relics</strong> from the Merchant for passive bonuses</li>
-        </ul>
-      </section>
+    <div class="tip-box">
+      <strong>Pro Tip:</strong> Don't hoard cards. Play them as soon as you have energy — sitting at full energy is wasting resources.
+    </div>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">Early Game Strategy</h2>
-        <ol class="list-decimal pl-5 space-y-2 mt-2">
-          <li><strong>Start with Bloodfang</strong> — the starting character has balanced stats and a simple deck, perfect for learning.</li>
-          <li><strong>Prioritize AoE cards</strong> early — they clear groups of weak enemies fast.</li>
-          <li><strong>Grab one healing card</strong> by floor 3 — sustainability matters more than raw damage early on.</li>
-          <li><strong>Don't skip relic rooms</strong> — relics provide permanent passive bonuses that scale through the entire run.</li>
-          <li><strong>Thin your deck when possible</strong> — removing weak starting cards at the Forge makes your deck more consistent.</li>
-        </ol>
-      </section>
+    <h3>2. Combat Flow</h3>
+    <p>Combat is real-time. Enemies spawn in waves. Your deck cycles automatically — when empty, it reshuffles. Movement is essential:</p>
+    <ul>
+      <li>Keep moving — standing still = dead in 3 seconds</li>
+      <li>Watch for red telegraph indicators on enemy attacks</li>
+      <li>Prioritize killing ranged enemies first</li>
+    </ul>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">First Character: Bloodfang</h2>
-        <p>Bloodfang is the default starting character with a Blood-element starter deck. His passive ability, <strong>Crimson Recovery</strong>, heals you for 2 HP every time you play a Blood card. Build around Blood synergy cards for maximum sustain.</p>
-        <p class="mt-2">Once you clear floor 10 with Bloodfang, you unlock the next character: <strong>Frostveil</strong>.</p>
-      </section>
+    <h3>3. The Dungeon Crawl Loop</h3>
+    <p>Each run goes through multiple floors. Between floors you can:</p>
+    <ul>
+      <li><strong>Pick new cards</strong> to expand your deck</li>
+      <li><strong>Upgrade existing cards</strong> at the Forge (costs gold)</li>
+      <li><strong>Heal</strong> at Blood Altars (costs gold)</li>
+      <li><strong>Buy relics</strong> from the Merchant for permanent passive bonuses</li>
+    </ul>
 
-      <section>
-        <h2 class="text-xl font-bold text-white mb-3">Common Beginner Mistakes</h2>
-        <ul class="list-disc pl-5 space-y-1 mt-2">
-          <li><strong>Bloat</strong> — Taking every card offered. A lean 15-20 card deck is stronger than a bloated 35-card deck.</li>
-          <li><strong>Ignoring relics</strong> — Relics are run-defining. Always visit relic rooms.</li>
-          <li><strong>One-element obsession</strong> — While elemental synergy is powerful, having a secondary element covers weaknesses.</li>
-          <li><strong>Standing still</strong> — Movement is defense. Always be repositioning.</li>
-        </ul>
-      </section>
+    <div class="warn-box">
+      <strong>Warning:</strong> Blood Altars get more expensive each time you use them. Don't rely on them — build sustain into your deck instead.
+    </div>
 
-      <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-3 text-sm">
-        <span class="text-gray-500">More guides:</span>
-        <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
-        <a href="/guides/cards-tier-list" class="text-red-400 hover:underline">Cards Tier List</a>
-        <a href="/guides/boss-guide" class="text-red-400 hover:underline">Boss Guide</a>
-      </div>
+    <h2 id="early-game">Early Game Strategy</h2>
+    <ol>
+      <li><strong>Start with Bloodfang.</strong> Balanced stats, self-healing passive — perfect for learning.</li>
+      <li><strong>Prioritize AoE cards early.</strong> Clear groups of weak enemies fast.</li>
+      <li><strong>Get one healing card by Floor 3.</strong> Vampiric Strike or Healing Light.</li>
+      <li><strong>Don't skip relic rooms.</strong> Relics define your run. Always visit them.</li>
+      <li><strong>Thin your deck.</strong> Remove weak starter cards at the Forge. Lean decks are consistent.</li>
+    </ol>
+
+    <h2 id="bloodfang">First Character: Bloodfang</h2>
+    <div class="stat-grid mb-4">
+      <div class="stat-item"><div class="stat-value">200</div><div class="stat-label">HP</div></div>
+      <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Energy</div></div>
+      <div class="stat-item"><div class="stat-value">3/5</div><div class="stat-label">Speed</div></div>
+      <div class="stat-item"><div class="stat-value">Blood</div><div class="stat-label">Element</div></div>
+    </div>
+    <p><strong>Passive:</strong> Heal 2 HP every time you play a Blood card. Build around Blood cards for maximum sustain.</p>
+    <p>Once you clear Floor 10, you unlock <strong>Frostveil</strong>.</p>
+
+    <h2 id="mistakes">Common Beginner Mistakes</h2>
+    <div class="danger-box">
+      <strong>#1 Mistake:</strong> Taking every card offered. A lean 15-20 card deck is far stronger than a bloated 35-card deck.
+    </div>
+    <ul>
+      <li><strong>Ignoring relics</strong> — Relics are run-defining. Always visit relic rooms.</li>
+      <li><strong>One-element obsession</strong> — Two elements cover each other's weaknesses.</li>
+      <li><strong>Standing still</strong> — Movement is your best defense.</li>
+    </ul>
+
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <span class="text-gray-500">Next guides:</span>
+      <a href="/guides/best-builds" class="text-red-400 hover:underline font-medium">Best Builds →</a>
+      <a href="/guides/cards-tier-list" class="text-red-400 hover:underline font-medium">Cards Tier List →</a>
     </div>
   </article>
 </BaseLayout>

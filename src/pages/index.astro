@@ -1,17 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const title = 'Vampire Crawlers Guide — Best Builds, Cards, Tips & Walkthroughs';
-const description = 'The ultimate Vampire Crawlers guide. Best builds, card tier list, beginner tips, boss strategies, and complete walkthroughs. Updated for 2026.';
-
-const featuredGuides = [
-  { title: 'Beginner\'s Guide', desc: 'Everything you need to know to survive your first runs in Vampire Crawlers.', slug: 'beginners-guide' },
-  { title: 'Best Builds & Decks', desc: 'Top-tier card combinations and builds to dominate the dungeon.', slug: 'best-builds' },
-  { title: 'Cards Tier List', desc: 'Every card ranked — S-tier to D-tier with detailed explanations.', slug: 'cards-tier-list' },
-  { title: 'How to Unlock All Characters', desc: 'Complete guide to unlocking every playable character.', slug: 'unlock-characters' },
-  { title: 'Boss Strategy Guide', desc: 'How to beat every boss in Vampire Crawlers with optimized strategies.', slug: 'boss-guide' },
-  { title: 'Card Combos & Synergies', desc: 'The most powerful card combinations and elemental synergies.', slug: 'card-combos' },
-];
+const title = 'Vampire Crawlers Guide — Best Builds, Cards, Tips & Walkthroughs (2026)';
+const description = 'The ultimate Vampire Crawlers wiki & guide. Best builds, card tier list, beginner tips, boss strategies, relics, characters, and complete walkthroughs. Updated for 2026.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -23,33 +13,66 @@ const featuredGuides = [
     "description": "${description}"
   }`} />
 
-  <!-- Hero -->
-  <section class="bg-gradient-to-b from-red-900/30 to-gray-950 border-b border-gray-800">
-    <div class="max-w-6xl mx-auto px-4 py-16 md:py-20 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Vampire Crawlers <span class="text-red-500">Guide</span></h1>
-      <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-2">The ultimate resource for builds, cards, strategies, and walkthroughs.</p>
-      <p class="text-sm text-gray-500">Poncle's roguelike deckbuilder — 1M+ players. Free guides, updated for 2026.</p>
-    </div>
-  </section>
-
-  <!-- Guides grid -->
-  <div class="max-w-6xl mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold text-white mb-6">All Guides</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {featuredGuides.map(g => (
-        <a href={`/guides/${g.slug}`} class="block bg-gray-900 border border-gray-800 hover:border-red-500/50 rounded-xl p-5 transition-colors group">
-          <h3 class="font-semibold text-white group-hover:text-red-400 transition-colors mb-2">{g.title}</h3>
-          <p class="text-sm text-gray-500">{g.desc}</p>
-        </a>
-      ))}
+  <!-- Hero banner -->
+  <div class="bg-gradient-to-br from-red-900/40 via-gray-900 to-gray-950 border border-gray-800 rounded-xl p-8 mb-6">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers <span class="text-red-500">Wiki</span></h1>
+        <p class="text-gray-400 max-w-lg">Complete guide to poncle's roguelike deckbuilder. Cards, builds, bosses, relics, characters — everything you need to master the dungeon.</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">1M+ players</span>
+          <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">12 guides</span>
+          <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">Updated May 2026</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Game info -->
-  <div class="max-w-6xl mx-auto px-4 pb-10">
-    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-      <h2 class="text-xl font-bold text-white mb-3">About Vampire Crawlers</h2>
-      <p class="text-gray-400 leading-relaxed">Vampire Crawlers is a roguelike deckbuilding action game from poncle, the creators of Vampire Survivors. Released April 2026, it combines card-based combat with the bullet heaven survivor genre. Build your deck, chain powerful combos, and crawl through endless dungeons. With over 100 cards, 12+ playable characters, and deep synergy systems, mastering the game requires understanding card interactions, optimal builds, and boss patterns.</p>
+  <!-- Quick links -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+    <a href="/guides/beginners-guide" class="bg-gray-900 border border-gray-800 hover:border-blue-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">🎓</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-blue-400 transition-colors">Beginner's Guide</h3>
+      <p class="text-sm text-gray-500 mt-1">New to Vampire Crawlers? Start here. Cards, combat, dungeon loop — explained simply.</p>
+    </a>
+    <a href="/guides/best-builds" class="bg-gray-900 border border-gray-800 hover:border-red-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">⚔️</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-red-400 transition-colors">Best Builds</h3>
+      <p class="text-sm text-gray-500 mt-1">Blood DPS, Frost Control, Shadow Assassin, Lightning Burst — S-tier decks revealed.</p>
+    </a>
+    <a href="/guides/cards-tier-list" class="bg-gray-900 border border-gray-800 hover:border-yellow-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">🃏</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-yellow-400 transition-colors">Cards Tier List</h3>
+      <p class="text-sm text-gray-500 mt-1">Every card ranked S to D. Find the strongest cards for your deck.</p>
+    </a>
+    <a href="/guides/boss-guide" class="bg-gray-900 border border-gray-800 hover:border-purple-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">💀</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-purple-400 transition-colors">Boss Strategies</h3>
+      <p class="text-sm text-gray-500 mt-1">Every boss — attack patterns, weaknesses, and how to beat them.</p>
+    </a>
+    <a href="/guides/characters-guide" class="bg-gray-900 border border-gray-800 hover:border-green-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">👤</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-green-400 transition-colors">Characters</h3>
+      <p class="text-sm text-gray-500 mt-1">All 8 characters — stats, passives, and best builds for each.</p>
+    </a>
+    <a href="/guides/relics-guide" class="bg-gray-900 border border-gray-800 hover:border-cyan-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50">
+      <span class="text-2xl">💎</span>
+      <h3 class="font-bold text-white mt-2 group-hover:text-cyan-400 transition-colors">Relics Guide</h3>
+      <p class="text-sm text-gray-500 mt-1">18 relics — effects, rarity, and which builds they synergy with.</p>
+    </a>
+  </div>
+
+  <!-- Game overview -->
+  <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6">
+    <h2 class="text-xl font-bold text-white mb-3">About the Game</h2>
+    <p class="text-gray-400 leading-relaxed mb-3">Vampire Crawlers is poncle's follow-up to the smash hit Vampire Survivors. Released April 21, 2026, it sold 1 million copies in its first week on Steam. The game merges roguelike deckbuilding with bullet heaven action — you collect cards, chain elemental combos, and fight through procedurally generated dungeons.</p>
+    <div class="stat-grid mt-4">
+      <div class="stat-item"><div class="stat-value">100+</div><div class="stat-label">Cards</div></div>
+      <div class="stat-item"><div class="stat-value">8</div><div class="stat-label">Characters</div></div>
+      <div class="stat-item"><div class="stat-value">18</div><div class="stat-label">Relics</div></div>
+      <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Bosses</div></div>
+      <div class="stat-item"><div class="stat-value">4</div><div class="stat-label">Elements</div></div>
+      <div class="stat-item"><div class="stat-value">30+</div><div class="stat-label">Floors</div></div>
     </div>
   </div>
 </BaseLayout>
