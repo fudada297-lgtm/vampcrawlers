@@ -1,54 +1,54 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const title = 'Vampire Crawlers Relics Guide — All Relics, Effects & Best Picks (2026)';
-const description = 'Complete guide to every relic in Vampire Crawlers. Relic effects, rarity, best relics for each build, and where to find them.';
+const title = 'Vampire Crawlers Relics Guide — All 15 Relics, Effects & Locations';
+const description = 'Complete Vampire Crawlers relics guide. All 15 relics with permanent effects, dungeon locations, and unlock requirements. Combo Stack, Grim Grimoire, Overkill and more.';
 
 const relics = [
-  { name: 'Vampire Fang', rarity: 'Legendary', effect: '+15% lifesteal on all Blood cards', build: 'Blood DPS', location: 'Boss drop: Lady Crimson' },
-  { name: 'Crimson Chalice', rarity: 'Epic', effect: 'Blood cards cost 1 less energy', build: 'Blood DPS', location: 'Merchant (800 gold)' },
-  { name: 'Bleeding Heart', rarity: 'Rare', effect: '+10 max HP for each Blood card in deck', build: 'Blood DPS', location: 'Relic rooms, chests' },
-  { name: 'Frost Crystal', rarity: 'Epic', effect: 'Freeze duration +2 seconds', build: 'Frost Control', location: 'Boss drop: Frost Giant' },
-  { name: 'Ice Crown', rarity: 'Legendary', effect: 'Frozen enemies take 50% more damage from all sources', build: 'Frost Control', location: 'Clear Floor 25 with Frostveil' },
-  { name: 'Permafrost Ring', rarity: 'Rare', effect: '10% chance to freeze on any card hit', build: 'Frost Control', location: 'Merchant (500 gold)' },
-  { name: 'Shadow Cloak', rarity: 'Epic', effect: 'First attack after Vanish always crits for 3x', build: 'Shadow Assassin', location: 'Boss drop: Shadow Twins' },
-  { name: 'Assassin\'s Dagger', rarity: 'Epic', effect: '+25% crit damage', build: 'Shadow Assassin', location: 'Relic rooms, chests' },
-  { name: 'Night Pendant', rarity: 'Rare', effect: 'Shadow cards generate 1 extra energy', build: 'Shadow Assassin', location: 'Merchant (600 gold)' },
-  { name: 'Storm Gem', rarity: 'Legendary', effect: 'Lightning damage chains to 2 additional targets', build: 'Lightning Burst', location: 'Boss drop: Storm Dragon' },
-  { name: 'Tesla Coil', rarity: 'Epic', effect: 'Every 5th Lightning card casts twice', build: 'Lightning Burst', location: 'Clear Floor 20 with Stormcaller' },
-  { name: 'Conductor\'s Rod', rarity: 'Rare', effect: '+20% Lightning damage', build: 'Lightning Burst', location: 'Merchant (500 gold)' },
-  { name: 'Phoenix Feather', rarity: 'Legendary', effect: 'Revive once per run with 50% HP', build: 'Universal', location: 'Rare drop: any boss' },
-  { name: 'Gold Doubler', rarity: 'Epic', effect: 'Double all gold earned', build: 'Universal', location: 'Merchant (1000 gold)' },
-  { name: 'Deck Thinner', rarity: 'Rare', effect: 'Remove 2 cards from deck on pickup', build: 'Universal', location: 'Relic rooms' },
-  { name: 'Energy Amulet', rarity: 'Rare', effect: '+1 max energy', build: 'Universal', location: 'Merchant (400 gold)' },
-  { name: 'Scout\'s Map', rarity: 'Common', effect: 'Reveal all rooms on current floor', build: 'Universal', location: 'Relic rooms, chests' },
-  { name: 'Lucky Dice', rarity: 'Common', effect: '+10% better card rarity in card rewards', build: 'Universal', location: 'Merchant (300 gold)' },
+  { name: 'Combo Stack', effect: 'Play cards in ascending mana cost order for combo multiplier bonus', location: 'Tutorial', note: 'Received automatically' },
+  { name: 'Milky Way Map', effect: 'Shows enemy positions on the mini-map', location: 'Default', note: 'Unlocks after first 2 dungeons' },
+  { name: 'Rilevatore', effect: 'Shows weapon effect previews against enemies', location: 'Default', note: 'Unlocks after first 2 dungeons' },
+  { name: 'Gem Hammer', effect: 'Unlock the ability to socket gems into cards', location: 'Mad Forest' },
+  { name: 'Guiding Light', effect: 'Shows destructible light sources on mini-map', location: 'Inlaid Library' },
+  { name: 'Grim Grimoire', effect: 'Pause menu shows discovered card evolutions & combos', location: 'Library West Wing' },
+  { name: 'Polentir', effect: 'Unlock the Fortune Teller tent in the Village (Arcana system)', location: 'Furious Forest' },
+  { name: 'Arcana Finder', effect: 'Random Arcana chests appear in dungeons', location: 'Library Sanctum' },
+  { name: 'Stardust Anvil', effect: 'Unlock the Blacksmith in the Village — add gem slots to cards', location: 'Teeny Bridge' },
+  { name: 'Overkill', effect: 'After beating a boss, keep attacking for bonus gold (cap: 500)', location: 'Teeny Bridge' },
+  { name: 'Bomba Infernale', effect: 'One-click clear all enemies on Floor 1 of any completed dungeon', location: 'Dairy Plant' },
+  { name: 'Ultimate Ultra Overkill', effect: 'Increase Overkill gold cap from 500 to 5,000', location: 'Curd Refinery' },
+  { name: 'Lapidary Loupe', effect: 'Unlock Jeweler counter — adjust gem drop rates or ban specific gems', location: 'Gallo Tower' },
+  { name: "Sorceress' Tears", effect: 'Adds a "Speed Up" button to the world map (fast mode)', location: 'Gallo Tower' },
+  { name: 'Ovenkilt', effect: 'Overkill triggers on the last enemy of every encounter, but chests no longer give gold', location: 'Cappella Ultima', note: 'Final relic' },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/relics-guide">
-  <article class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Relics Guide</h1>
-    <p class="text-gray-400 mb-8">Every relic, its effect, which build to use it with, and how to find it.</p>
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Relics Guide</h1>
+    <p class="text-gray-500 mb-6">All 15 relics — permanent upgrades, where to find them, and what they do.</p>
+
+    <div class="tip-box"><strong>Important:</strong> Relics are permanent once collected. You can toggle them on/off in the Museum in the Village. No need to equip them.</div>
 
     <div class="space-y-3">
-      {relics.map(r => (
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h3 class="font-semibold text-white">{r.name} <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-400">{r.rarity}</span></h3>
-            <p class="text-sm text-gray-400">{r.effect}</p>
-          </div>
-          <div class="flex gap-3 text-xs">
-            <span class="text-gray-500">{r.build}</span>
-            <span class="text-gray-600">{r.location}</span>
+      {relics.map((r, i) => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="font-bold text-white">{i+1}. {r.name}</h3>
+              <p class="text-sm text-gray-400 mt-0.5">{r.effect}</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded">{r.location}</span>
+              {r.note && <p class="text-xs text-gray-500 mt-0.5">{r.note}</p>}
+            </div>
           </div>
         </div>
       ))}
     </div>
 
-    <div class="mt-6 flex flex-wrap gap-3 text-sm">
-      <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
-      <a href="/guides/beginners-guide" class="text-red-400 hover:underline">Beginner's Guide</a>
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <a href="/guides/cards-list" class="text-red-400 hover:underline font-medium">Cards List →</a>
+      <a href="/guides/dungeons-guide" class="text-red-400 hover:underline font-medium">Dungeons Guide →</a>
     </div>
   </article>
 </BaseLayout>

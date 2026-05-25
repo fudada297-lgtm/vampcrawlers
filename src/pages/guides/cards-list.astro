@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Vampire Crawlers Cards List — All Attack, Defense, Mana & Stat Boost Cards';
+const description = 'Complete catalog of every card in Vampire Crawlers. 37 attack cards, 7 defense cards, 6 mana cards, 18 stat boost cards with mana costs, damage, and effects.';
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/cards-list">
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Cards List</h1>
+    <p class="text-gray-500 mb-6">Complete Vampire Crawlers card catalog. 6 card types, 80+ unique cards.</p>
+
+    <div class="toc">
+      <div class="toc-title">Card Types</div>
+      <ol>
+        <li><a href="#attack">Attack Cards (Red) — 37 cards</a></li>
+        <li><a href="#defense">Defense Cards (Blue) — 7 cards</a></li>
+        <li><a href="#stat">Stat Boost Cards (Yellow) — 18 cards</a></li>
+        <li><a href="#mana">Mana Cards (Purple) — 6 cards</a></li>
+        <li><a href="#character">Character Cards (Teal) — 22 cards</a></li>
+        <li><a href="#wild">Wild & Temporary Cards</a></li>
+      </ul>
+    </div>
+
+    <div class="info-box">
+      <strong>Card Color System:</strong> <span class="text-red-400">Red = Attack</span> · <span class="text-blue-400">Blue = Defense</span> · <span class="text-yellow-400">Yellow = Stat Boost</span> · <span class="text-purple-400">Purple = Mana</span> · <span class="text-teal-400">Teal = Character</span> · <span class="text-gray-300">White = Wild (W cost)</span> · <span class="text-gray-500">Black = Temporary (debuffs)</span>
+    </div>
+
+    <h2 id="attack">Attack Cards (Red)</h2>
+    <p>Primary damage dealers. 37 cards total.</p>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-red-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2">Damage</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
+      {[
+        {n:'Whip',m:0,d:'8',e:'Multiple enemies'},{n:'Bone',m:0,d:'3–15',e:'Multiple enemies'},{n:'Knife',m:0,d:'40',e:'Crit'},{n:'Magic Wand',m:0,d:'30',e:'Prioritizes attackers'},
+        {n:'Cherry Bomb',m:1,d:'18',e:'Chance to explode'},{n:'Fire Wand',m:1,d:'45',e:'—'},{n:'Garlic',m:1,d:'10',e:'Front row, Disarm'},{n:'Gatti Amari',m:1,d:'25–40',e:'Chance to Scuffle'},
+        {n:'Gorgeous Moon',m:1,d:'Erase',e:'Erase 1 enemy, Moonrise'},{n:'King Bible',m:1,d:'40',e:'Chance to Knockback'},{n:'Runetracer',m:1,d:'15–79',e:'Bounces, more damage per bounce'},
+        {n:'Axe',m:2,d:'45',e:'Multiple, Knockback'},{n:'Bloody Tear',m:2,d:'40',e:'Multiple, On Crit: Heal 3'},{n:'Carréllo',m:2,d:'45',e:'Multiple, Knockback'},
+        {n:'Celestial Dusting',m:2,d:'35',e:'Little Heart effect'},{n:'Cross',m:2,d:'80',e:'—'},{n:'Eight The Sparrow',m:2,d:'35',e:'—'},
+        {n:'Holy Wand',m:2,d:'150',e:'Prioritizes attackers'},{n:'Lightning Ring',m:2,d:'125',e:'—'},{n:'Unholy Vespers',m:2,d:'120',e:'Chance to Knockback'},
+        {n:'Vicious Hunger',m:2,d:'50–100',e:'May turn enemies into coins'},{n:'Valkyrie Turner',m:2,d:'25',e:'Front row, Valkyrie\'s Inferno'},
+        {n:'Death Spiral',m:3,d:'160',e:'Front row, Crit'},{n:'Heaven Sword',m:3,d:'100',e:'Crit'},{n:'Hellfire',m:3,d:'225',e:'Chance to Knockback'},
+        {n:'NO FUTURE',m:3,d:'15',e:'Bounces and explodes'},{n:'Peachone',m:3,d:'100',e:'Bombards after every turn'},{n:'Phiera Der Tuphello',m:3,d:'70',e:'—'},
+        {n:'Santa Water',m:3,d:'60',e:'Burns enemies after turn'},{n:'Shadow Pinion',m:3,d:'90',e:'Retrigger'},{n:'Soul Eater',m:3,d:'100',e:'Front row, Heal 3, Disarm'},
+        {n:'Thousand Edge',m:3,d:'180',e:'—'},{n:'Ebony Wings',m:4,d:'140',e:'Bombards after every turn'},{n:'La Borra',m:4,d:'150',e:'Burns after every turn'},
+        {n:'Phieraggi',m:4,d:'350',e:'—'},{n:'Thunder Loop',m:4,d:'150',e:'Attacks again at end of turn'},{n:'Mannajja',m:5,d:'79',e:'Multiple, Raw Mana'},
+        {n:'Pentagram',m:5,d:'Erase',e:'Erase 8 rows, Countdown'},{n:'Vandalier',m:5,d:'500',e:'Chance Knockback, Big Bird'},
+        {n:'Bracelet',m:'W',d:'100',e:'Wild card'},
+      ].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-red-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-center">{c.d}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
+    </tbody></table></div>
+
+    <h2 id="defense">Defense Cards (Blue)</h2>
+    <p>Generate Armor to protect your Crawlers. 7 cards total.</p>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-blue-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
+      {[{n:'Armor',m:0,e:'Add 2 Armor'},{n:'Golden Armor',m:1,e:'Add 4 Armor'},{n:'Pummarola',m:1,e:'Recovery: Heal 2 after encounter'},{n:'Rainbow Armor',m:2,e:'Add 6 Armor'},{n:'Pummadora',m:2,e:'Recovery: Heal 4 after encounter'},{n:'Clock Lancet',m:3,e:'Apply 1 Freeze'},{n:'Hero\'s Armor',m:3,e:'Add 8 Armor'},{n:'Parm Aegis',m:'W',e:'Add 1 Armor (Wild)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-blue-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
+    </tbody></table></div>
+
+    <h2 id="stat">Stat Boost Cards (Yellow)</h2>
+    <p>Temporarily raise stats. Some are Destroy-type (one-time use per battle).</p>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-yellow-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
+      {[{n:'Bracer',m:0,e:'Hand: Increase hand by 1'},{n:'Candle',m:0,e:'Area: Attacks deal 5% splash'},{n:'Skull O\'Maniac',m:0,e:'+10% enemy strength, gain bonus XP'},{n:'Spellbinder',m:0,e:'Duration: Crawlers trigger 2 more abilities'},{n:'Attractorb',m:1,e:'Draw 1 card'},{n:'Candella',m:1,e:'Area: Attacks deal 10% splash'},{n:'Crown',m:1,e:'Gain 15% XP Growth (Destroy)'},{n:'Hollow Heart',m:1,e:'Gain 3 Max Health (Destroy)'},{n:'Spinach',m:1,e:'Might: Deal 10% more damage'},{n:'Stone Mask',m:1,e:'Greed: Gain 10% more coins (Destroy)'},{n:'Candelabrador',m:2,e:'Area: Attacks deal 15% splash'},{n:'Clover',m:2,e:'Add 10% Luck'},{n:'Crystal Crown',m:2,e:'Gain 20% XP Growth (Destroy)'},{n:'Duplicator',m:2,e:'Amount: Fire 1 more projectile'},{n:'Du-Duplicator',m:2,e:'Amount: Fire 2 more projectiles'},{n:'Forever Heart',m:2,e:'Gain 1 Max Health'},{n:'Sprig o\' Spinach',m:2,e:'Might: Deal 20% more damage'},{n:'Tirajisu',m:2,e:'Revival: Gain 10% Revival (Destroy)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-yellow-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
+    </tbody></table></div>
+
+    <h2 id="mana">Mana Cards (Purple)</h2>
+    <p>Generate Mana to play more cards. 6 cards total.</p>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-purple-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
+      {[{n:'Empty Tome',m:0,e:'Add 1 Mana'},{n:'Light Tome',m:1,e:'Add 2 Mana'},{n:'Weighty Tome',m:2,e:'Add 3 Mana'},{n:'Ancient Tome',m:3,e:'Add 4 Mana'},{n:'Song of Mana',m:4,e:'Deal 10 damage to multiple enemies, Raw Mana'},{n:'Wings',m:'W',e:'Reduce Mana cost of next card by 1 (Wild)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-purple-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
+    </tbody></table></div>
+
+    <h2 id="character">Character Cards (Teal)</h2>
+    <p>22 playable characters, each with unique card effects. See the <a href="/guides/characters-guide" class="text-red-400">Characters Guide</a> for full details.</p>
+
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <a href="/guides/characters-guide" class="text-red-400 hover:underline font-medium">Characters Guide →</a>
+      <a href="/guides/beginners-guide" class="text-red-400 hover:underline font-medium">Beginner's Guide →</a>
+    </div>
+  </article>
+</BaseLayout>

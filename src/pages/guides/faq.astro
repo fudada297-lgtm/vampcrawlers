@@ -1,42 +1,37 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const title = 'Vampire Crawlers FAQ — Frequently Asked Questions (2026)';
-const description = 'Common Vampire Crawlers questions answered. How to unlock characters, best strategy for beginners, how cards work, and more.';
-
-const faqs = [
-  { q: 'What is Vampire Crawlers?', a: 'Vampire Crawlers is a roguelike deckbuilding action game by poncle, the creators of Vampire Survivors. Released April 2026, it combines card-based combat with bullet heaven survivor mechanics.' },
-  { q: 'Is Vampire Crawlers free?', a: 'No, it is a paid game available on Steam. Price is $14.99 USD with occasional sales.' },
-  { q: 'How do I unlock new characters?', a: 'Characters unlock by completing specific challenges. For example, clear Floor 10 with Bloodfang to unlock Frostveil. Check our <a href="/guides/unlock-characters" style="color:#f87171;">Unlock All Characters guide</a> for full details.' },
-  { q: 'What is the best build in Vampire Crawlers?', a: 'The Blood DPS build (Crimson Slash + Blood Surge + Vampiric Strike) is considered S-tier for both normal and Endless Mode. See our <a href="/guides/best-builds" style="color:#f87171;">Best Builds guide</a>.' },
-  { q: 'How many cards are in the game?', a: 'Over 100 unique cards across four elements: Blood, Frost, Shadow, and Lightning. See our <a href="/guides/cards-tier-list" style="color:#f87171;">Cards Tier List</a> for the full ranking.' },
-  { q: 'What are relics?', a: 'Relics are passive items that provide permanent bonuses for the entire run. You can obtain them from relic rooms, boss drops, and merchants. See the <a href="/guides/relics-guide" style="color:#f87171;">Relics Guide</a>.' },
-  { q: 'How does Endless Mode work?', a: 'Endless Mode unlocks after beating Floor 30. Floors continue indefinitely with 15% difficulty scaling every 5 floors. See our <a href="/guides/endless-mode" style="color:#f87171;">Endless Mode guide</a>.' },
-  { q: 'Can I play on mobile?', a: 'Vampire Crawlers is currently PC only (Steam). No mobile version has been announced as of May 2026.' },
-  { q: 'How do elemental synergies work?', a: 'Playing 3 cards of the same element activates a temporary bonus. See our <a href="/guides/elements-guide" style="color:#f87171;">Elements Guide</a> for full details.' },
-  { q: 'What is the best character for beginners?', a: 'Bloodfang. Balanced stats, self-healing passive, and simple deck make it perfect for learning the game.' },
-  { q: 'How long does it take to beat the game?', a: 'A typical first clear (Floor 30) takes 15-20 hours. Skilled players can clear it in under 10 hours. Endless Mode can go on indefinitely.' },
-  { q: 'Does the game have multiplayer?', a: 'No, Vampire Crawlers is a single-player experience. There is an online leaderboard for Endless Mode.' },
-];
+const title = 'Vampire Crawlers FAQ — Frequently Asked Questions';
+const description = 'Common Vampire Crawlers questions: how to play, unlock characters, best cards, game mechanics, and more.';
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/faq">
-  <article class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers FAQ</h1>
-    <p class="text-gray-400 mb-8">Common questions about Vampire Crawlers, answered.</p>
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">FAQ</h1>
+    <p class="text-gray-500 mb-6">Frequently asked questions about Vampire Crawlers.</p>
 
-    <div class="space-y-4">
-      {faqs.map((item, i) => (
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-5">
-          <h2 class="font-semibold text-white mb-1">{i + 1}. {item.q}</h2>
-          <p class="text-gray-400 text-sm"><Fragment set:html={item.a} /></p>
-        </div>
-      ))}
-    </div>
+    {[
+      { q: 'What is Vampire Crawlers?', a: 'A turn-based deckbuilder roguelite from poncle, the creators of Vampire Survivors. Released April 21, 2026 on Steam, Xbox, PS5, and Switch.' },
+      { q: 'Is it like Vampire Survivors?', a: 'No — Vampire Survivors is a real-time bullet heaven game. Vampire Crawlers is a turn-based card game. Different genre, same universe.' },
+      { q: 'How many cards are in the game?', a: '80+ cards across 6 types: 37 Attack (Red), 7 Defense (Blue), 18 Stat Boost (Yellow), 6 Mana (Purple), 22 Character (Teal), and several Wild/Temporary cards.' },
+      { q: 'How do I unlock new dungeons?', a: 'Most dungeons unlock by completing the previous dungeon in that chain. Some unlock by reaching a specific level (10 or 15) — you don\'t need to survive, just hit the level.' },
+      { q: 'What are relics?', a: 'Permanent upgrades found hidden in breakable objects (barrels, crates) in dungeons. Once collected, they stay active forever. You can toggle them in the Museum.' },
+      { q: 'What\'s the best starting strategy?', a: 'Clear Mad Forest first. Reach Level 10 there to unlock Inlaid Library. Collect the Combo Stack relic from the Tutorial. Buy characters at the Inn. Prioritize Mana cards early.' },
+      { q: 'How do I get more characters?', a: 'Buy them at the Gorton Bell Inn in the Village using coins earned from dungeon runs. New characters unlock by completing specific dungeons or reaching milestones.' },
+      { q: 'What is Combo Stack?', a: 'A relic that gives you a damage multiplier for playing cards in ascending mana cost order. Low cost → high cost = bigger combos = more damage.' },
+      { q: 'How many players does it support?', a: 'Single player only. No multiplayer mode.' },
+      { q: 'Is it on mobile?', a: 'No. Currently available on Steam, Xbox Series S|X, PlayStation 5, and Nintendo Switch.' },
+      { q: 'How much does it cost?', a: '$14.99 USD on Steam, with occasional sales.' },
+      { q: 'What are gems?', a: 'Gems (unlocked by the Gem Hammer relic) can be socketed into cards at the Blacksmith for permanent stat bonuses. The Lapidary Loupe relic lets you customize gem drops.' },
+    ].map((item, i) => (
+      <div class="bg-gray-900 border border-gray-800 rounded-xl p-5 mb-3">
+        <h2 class="font-bold text-white mb-1">{i+1}. {item.q}</h2>
+        <p class="text-gray-400 text-sm">{item.a}</p>
+      </div>
+    ))}
 
-    <div class="mt-6 flex flex-wrap gap-3 text-sm">
-      <a href="/" class="text-red-400 hover:underline">Home</a>
-      <a href="/guides/beginners-guide" class="text-red-400 hover:underline">Beginner's Guide</a>
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <a href="/guides/beginners-guide" class="text-red-400 hover:underline font-medium">Beginner's Guide →</a>
+      <a href="/guides/cards-list" class="text-red-400 hover:underline font-medium">Cards List →</a>
     </div>
   </article>
 </BaseLayout>

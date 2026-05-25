@@ -1,45 +1,60 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Vampire Crawlers Characters Guide — All 22 Characters, Stats & How to Unlock';
+const description = 'Complete Vampire Crawlers characters list. All 22 playable characters with stats, card effects, trigger conditions, and unlock requirements.';
 
-const title = 'Vampire Crawlers Characters Guide — Stats, Passives & Best Builds (2026)';
-const description = 'Complete guide to all Vampire Crawlers characters. Stats, passive abilities, best builds for each character, and recommended deck compositions.';
+const chars = [
+  { name: 'Antonio', cost: 0, effect: 'Add 3 Armor', trigger: '+10% damage when red card played', dur: 5, unlock: 'Default' },
+  { name: 'Arca', cost: 0, effect: 'Add 3 Mana', trigger: '+1 Mana when purple card played', dur: 5, unlock: 'Default' },
+  { name: 'Cavallo', cost: 0, effect: 'Fire 2 more projectiles (2s)', trigger: '+1 Amount when yellow card played', dur: 2, unlock: 'Default' },
+  { name: 'Christine', cost: 0, effect: 'Reduce Mana cost by 1 (9s)', trigger: 'Disarm 1 enemy when purple card played', dur: 3, unlock: 'Default' },
+  { name: 'Clerici', cost: 0, effect: 'Heal 3', trigger: 'Heal 1 after encounter when blue card played', dur: 6, unlock: 'Default' },
+  { name: 'Imelda', cost: 0, effect: 'Add 18 XP', trigger: '+1% XP Growth when yellow card played', dur: 5, unlock: 'Default' },
+  { name: 'MissingN0', cost: 0, effect: 'Add 4 Armor', trigger: 'Draw 2 cards when red card played', dur: 170, unlock: 'Hidden character' },
+  { name: 'Mortaccio', cost: 0, effect: 'Fire 2 more projectiles', trigger: 'Fire 1 more projectile when blue card played', dur: 7, unlock: 'Default' },
+  { name: 'Porta', cost: 0, effect: 'Projectiles hit 50% more (11s)', trigger: '+1 Mana when red card played', dur: '—', unlock: 'Default' },
+  { name: 'Concetta', cost: 1, effect: 'Attacks deal 10% splash damage', trigger: '+5% splash damage when red card played', dur: 10, unlock: 'Gallo Tower' },
+  { name: 'Dommario', cost: 1, effect: 'Crawlers trigger 2 more abilities', trigger: 'Deal 40 damage (knockback) when purple card played', dur: 7, unlock: 'Unknown' },
+  { name: 'Gallo', cost: 1, effect: 'Gain 25% more coins', trigger: '+10% coins when Wild card played', dur: 8, unlock: 'Gallo Tower' },
+  { name: 'Gennaro', cost: 1, effect: 'Fire 2 more projectiles', trigger: 'Deal 90 damage when red card played', dur: 5, unlock: 'Unknown' },
+  { name: 'Giovanna', cost: 1, effect: 'Add 20% Luck', trigger: 'Draw 1 card when purple card played', dur: 6, unlock: 'Library Sanctum' },
+  { name: 'Krochi', cost: 1, effect: 'Gain 10% Revival', trigger: '+5% Revival when Wild card played', dur: 10, unlock: 'Unknown' },
+  { name: 'Lama', cost: 1, effect: 'Deal 50% more damage', trigger: '+15% damage when blue card played', dur: 5, unlock: 'Unknown' },
+  { name: "O'Sole", cost: 1, effect: 'Fire 3 more projectiles', trigger: '+5% Luck when red card played', dur: 4, unlock: 'Unknown' },
+  { name: 'Pasqualina', cost: 1, effect: 'Attacks deal 10% splash damage', trigger: 'Increase Hand by 1 when purple card played', dur: 2, unlock: 'Unknown' },
+  { name: 'Poe', cost: 1, effect: 'Attacks deal 20% splash damage', trigger: 'Draw 1 card when blue card played', dur: 3, unlock: 'Unknown' },
+  { name: 'Poppea', cost: 1, effect: 'Increase Hand by 1', trigger: 'Crawlers trigger 1 more ability when yellow card played', dur: 9, unlock: 'Milk Factory' },
+  { name: 'Pugnala', cost: 1, effect: 'Deal 20% more damage', trigger: 'Draw 1 card when yellow card played', dur: 3, unlock: 'Berserk Wood' },
+  { name: 'Ramba', cost: 1, effect: 'Fire 3 more projectiles', trigger: '+1 Amount when purple card played', dur: '—', unlock: 'Unknown' },
+];
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/characters-guide">
-  <article class="max-w-4xl mx-auto px-4 py-10">
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Characters Guide</h1>
-    <p class="text-gray-400 mb-8">Every playable character, their stats, passives, and best builds.</p>
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Characters Guide</h1>
+    <p class="text-gray-500 mb-4">All 22 playable characters. Purchased at the <strong>Gorton Bell Inn</strong> in the Village.</p>
 
-    <div class="space-y-6">
-      {[
-        { name: 'Bloodfang', element: 'Blood', hp: '200', energy: '5', speed: '3/5', difficulty: 'Easy', passive: 'Crimson Recovery — Heal 2 HP per Blood card played', bestBuild: 'Full Blood DPS', desc: 'The default character with balanced stats and simple mechanics. Start here. Prioritize Blood cards and Vampiric Strike for early sustain.' },
-        { name: 'Frostveil', element: 'Frost', hp: '180', energy: '4', speed: '3/5', difficulty: 'Easy', passive: 'Chill Aura — Nearby enemies are slowed by 15%', bestBuild: 'Frost Control', desc: 'Passive crowd control makes Frostveil very forgiving. Build around Blizzard and Frozen Armor. Best for learning enemy patterns.' },
-        { name: 'Shadowmancer', element: 'Shadow', hp: '140', energy: '6', speed: '5/5', difficulty: 'Medium', passive: 'Shadow Step — Teleport a short distance every 10 seconds', bestBuild: 'Shadow Assassin', desc: 'High mobility, low HP. The Shadow Step passive lets you dodge attacks other characters cannot. Skill-dependent but incredibly powerful when mastered.' },
-        { name: 'Stormcaller', element: 'Lightning', hp: '160', energy: '5', speed: '4/5', difficulty: 'Medium', passive: 'Static Discharge — Lightning damage chains to 1 extra enemy', bestBuild: 'Lightning Burst', desc: 'Fast wave clearer. Best for farming runs and Endless Mode early floors. Weaker against bosses without backup element.' },
-        { name: 'Crimson Lord', element: 'Blood', hp: '250', energy: '5', speed: '2/5', difficulty: 'Hard', passive: 'Blood Rage — +3% damage per missing 1% HP', bestBuild: 'Blood DPS (Aggressive)', desc: 'High risk, high reward. At low HP, Crimson Lord deals insane damage. Pair with strong healing cards. Phoenix Feather is essential.' },
-        { name: 'The Reaper', element: 'Shadow', hp: '120', energy: '7', speed: '5/5', difficulty: 'Very Hard', passive: 'Death Mark — Killed enemies leave behind a damage zone', bestBuild: 'Shadow Assassin (Glass Cannon)', desc: 'Secret character. Extremely fragile but has the highest damage ceiling. Only for expert players. Reward for mastering the game.' },
-      ].map(c => (
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-lg font-bold text-white">{c.name}</h2>
-            <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-400">{c.difficulty}</span>
+    <div class="info-box"><strong>How Characters Work:</strong> Your first (leading) character adds their stats to the party and 4 cards to your starter deck. Additional characters add only 1 card each. Each character has a unique Crawler effect triggered by playing specific color cards.</div>
+
+    <div class="space-y-3">
+      {chars.map((c, i) => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+            <h3 class="font-bold text-white">{i+1}. {c.name} <span class="text-xs text-gray-500">({c.unlock})</span></h3>
+            <span class="text-xs bg-gray-800 px-2 py-0.5 rounded text-gray-400">Cost: {c.cost} Mana</span>
           </div>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-sm">
-            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">HP: </span><span class="text-white font-semibold">{c.hp}</span></div>
-            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Energy: </span><span class="text-white font-semibold">{c.energy}</span></div>
-            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Speed: </span><span class="text-white font-semibold">{c.speed}</span></div>
-            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Element: </span><span class="text-white font-semibold">{c.element}</span></div>
+          <div class="grid sm:grid-cols-2 gap-2 text-sm">
+            <div><span class="text-gray-500">Play Effect:</span> <span class="text-teal-400">{c.effect}</span></div>
+            <div><span class="text-gray-500">Trigger:</span> <span class="text-gray-400">{c.trigger}</span></div>
+            <div><span class="text-gray-500">Duration:</span> {c.dur}</div>
           </div>
-          <p class="text-sm text-red-400 mb-1"><strong>Passive:</strong> {c.passive}</p>
-          <p class="text-sm text-gray-400 mb-1"><strong>Best Build:</strong> {c.bestBuild}</p>
-          <p class="text-sm text-gray-500">{c.desc}</p>
         </div>
       ))}
     </div>
 
-    <div class="mt-6 flex flex-wrap gap-3 text-sm">
-      <a href="/guides/unlock-characters" class="text-red-400 hover:underline">How to Unlock Characters</a>
-      <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <a href="/guides/unlock-guide" class="text-red-400 hover:underline font-medium">Unlock Guide →</a>
+      <a href="/guides/cards-list" class="text-red-400 hover:underline font-medium">Cards List →</a>
     </div>
   </article>
 </BaseLayout>

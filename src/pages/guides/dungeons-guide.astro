@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const title = 'Vampire Crawlers Dungeons Guide — All 15 Stages & Unlock Requirements';
+const description = 'Complete Vampire Crawlers dungeon list. All 15 stages with difficulty ratings, unlock requirements, boss info, and rewards. Mad Forest to Cappella Ultima.';
+
+const dungeons = [
+  { name: 'Mad Forest', diff: 1, unlock: 'Starting dungeon', reward: 'Gem Hammer relic', note: '' },
+  { name: 'Inlaid Library', diff: 2, unlock: 'Reach Level 10 in Mad Forest', reward: 'Guiding Light relic', note: 'No need to survive — die after Level 10, unlock still counts' },
+  { name: 'Furious Forest', diff: 2, unlock: 'Complete Mad Forest', reward: 'Polentir relic', note: '' },
+  { name: 'Library West Wing', diff: 3, unlock: 'Complete Inlaid Library', reward: 'Grim Grimoire relic', note: '' },
+  { name: 'Teeny Bridge', diff: 3, unlock: 'Reach Level 15 in Inlaid Library', reward: 'Stardust Anvil + Overkill relics', note: '' },
+  { name: 'Berserk Wood', diff: 3, unlock: 'Complete Furious Forest', reward: 'Pugnala character', note: '' },
+  { name: 'Library Sanctum', diff: 4, unlock: 'Complete Library West Wing', reward: 'Arcana Finder relic + Giovanna character', note: '' },
+  { name: 'Dairy Plant', diff: 4, unlock: 'Complete Teeny Bridge', reward: 'Bomba Infernale relic', note: '' },
+  { name: 'Milk Factory', diff: 4, unlock: 'Complete Dairy Plant', reward: 'Poppea character', note: '' },
+  { name: 'Weeny Bridge', diff: 5, unlock: 'Reach Level 15 in Dairy Plant', reward: '—', note: '' },
+  { name: 'Curd Refinery', diff: 6, unlock: 'Complete Milk Factory', reward: 'Ultimate Ultra Overkill relic', note: 'Common bottleneck — make sure Milk Factory is done' },
+  { name: 'Gallo Tower', diff: 6, unlock: 'Complete Weeny Bridge', reward: 'Concetta + Gallo, Sorceress\' Tears + Lapidary Loupe', note: '' },
+  { name: 'Meany Bridge', diff: 7, unlock: 'Defeat Giant Enemy Crab in Gallo Tower', reward: '—', note: 'Must kill the Crab, not just complete Gallo Tower' },
+  { name: 'Capella Magna', diff: 8, unlock: 'Complete Meany Bridge', reward: '—', note: '' },
+  { name: 'Cappella Ultima', diff: 9, unlock: 'Complete Capella Magna', reward: 'Ovenkilt relic (final)', note: 'Final dungeon' },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/dungeons-guide">
+  <article>
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Dungeons Guide</h1>
+    <p class="text-gray-500 mb-6">All 15 stages with unlock requirements and rewards. 5 branching chains.</p>
+
+    <div class="tip-box"><strong>Pro Tip:</strong> You can work on multiple dungeon chains simultaneously. Don't need to finish one to start another — just hit the level threshold or complete condition for each chain separately.</div>
+
+    <div class="space-y-2">
+      {dungeons.map((d, i) => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-bold bg-gray-800 w-6 h-6 rounded-full flex items-center justify-center text-gray-400">{i+1}</span>
+            <div>
+              <h3 class="font-bold text-white">{d.name}</h3>
+              <p class="text-xs text-gray-500">Unlock: {d.unlock}</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 text-xs">
+            <span class="text-gray-500">Diff: {'⭐'.repeat(d.diff)}</span>
+            {d.reward !== '—' && <span class="bg-green-900/30 text-green-400 px-2 py-0.5 rounded">{d.reward}</span>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
+      <a href="/guides/relics-guide" class="text-red-400 hover:underline font-medium">Relics Guide →</a>
+      <a href="/guides/unlock-guide" class="text-red-400 hover:underline font-medium">Unlock Guide →</a>
+    </div>
+  </article>
+</BaseLayout>
