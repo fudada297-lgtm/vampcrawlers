@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Relics Guide — All Relics, Effects & Best Picks (2026)';
+const description = 'Complete guide to every relic in Vampire Crawlers. Relic effects, rarity, best relics for each build, and where to find them.';
+
+const relics = [
+  { name: 'Vampire Fang', rarity: 'Legendary', effect: '+15% lifesteal on all Blood cards', build: 'Blood DPS', location: 'Boss drop: Lady Crimson' },
+  { name: 'Crimson Chalice', rarity: 'Epic', effect: 'Blood cards cost 1 less energy', build: 'Blood DPS', location: 'Merchant (800 gold)' },
+  { name: 'Bleeding Heart', rarity: 'Rare', effect: '+10 max HP for each Blood card in deck', build: 'Blood DPS', location: 'Relic rooms, chests' },
+  { name: 'Frost Crystal', rarity: 'Epic', effect: 'Freeze duration +2 seconds', build: 'Frost Control', location: 'Boss drop: Frost Giant' },
+  { name: 'Ice Crown', rarity: 'Legendary', effect: 'Frozen enemies take 50% more damage from all sources', build: 'Frost Control', location: 'Clear Floor 25 with Frostveil' },
+  { name: 'Permafrost Ring', rarity: 'Rare', effect: '10% chance to freeze on any card hit', build: 'Frost Control', location: 'Merchant (500 gold)' },
+  { name: 'Shadow Cloak', rarity: 'Epic', effect: 'First attack after Vanish always crits for 3x', build: 'Shadow Assassin', location: 'Boss drop: Shadow Twins' },
+  { name: 'Assassin\'s Dagger', rarity: 'Epic', effect: '+25% crit damage', build: 'Shadow Assassin', location: 'Relic rooms, chests' },
+  { name: 'Night Pendant', rarity: 'Rare', effect: 'Shadow cards generate 1 extra energy', build: 'Shadow Assassin', location: 'Merchant (600 gold)' },
+  { name: 'Storm Gem', rarity: 'Legendary', effect: 'Lightning damage chains to 2 additional targets', build: 'Lightning Burst', location: 'Boss drop: Storm Dragon' },
+  { name: 'Tesla Coil', rarity: 'Epic', effect: 'Every 5th Lightning card casts twice', build: 'Lightning Burst', location: 'Clear Floor 20 with Stormcaller' },
+  { name: 'Conductor\'s Rod', rarity: 'Rare', effect: '+20% Lightning damage', build: 'Lightning Burst', location: 'Merchant (500 gold)' },
+  { name: 'Phoenix Feather', rarity: 'Legendary', effect: 'Revive once per run with 50% HP', build: 'Universal', location: 'Rare drop: any boss' },
+  { name: 'Gold Doubler', rarity: 'Epic', effect: 'Double all gold earned', build: 'Universal', location: 'Merchant (1000 gold)' },
+  { name: 'Deck Thinner', rarity: 'Rare', effect: 'Remove 2 cards from deck on pickup', build: 'Universal', location: 'Relic rooms' },
+  { name: 'Energy Amulet', rarity: 'Rare', effect: '+1 max energy', build: 'Universal', location: 'Merchant (400 gold)' },
+  { name: 'Scout\'s Map', rarity: 'Common', effect: 'Reveal all rooms on current floor', build: 'Universal', location: 'Relic rooms, chests' },
+  { name: 'Lucky Dice', rarity: 'Common', effect: '+10% better card rarity in card rewards', build: 'Universal', location: 'Merchant (300 gold)' },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/relics-guide">
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Relics Guide</h1>
+    <p class="text-gray-400 mb-8">Every relic, its effect, which build to use it with, and how to find it.</p>
+
+    <div class="space-y-3">
+      {relics.map(r => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="font-semibold text-white">{r.name} <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-400">{r.rarity}</span></h3>
+            <p class="text-sm text-gray-400">{r.effect}</p>
+          </div>
+          <div class="flex gap-3 text-xs">
+            <span class="text-gray-500">{r.build}</span>
+            <span class="text-gray-600">{r.location}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+      <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
+      <a href="/guides/beginners-guide" class="text-red-400 hover:underline">Beginner's Guide</a>
+    </div>
+  </article>
+</BaseLayout>

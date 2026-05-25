@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Characters Guide — Stats, Passives & Best Builds (2026)';
+const description = 'Complete guide to all Vampire Crawlers characters. Stats, passive abilities, best builds for each character, and recommended deck compositions.';
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/characters-guide">
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Characters Guide</h1>
+    <p class="text-gray-400 mb-8">Every playable character, their stats, passives, and best builds.</p>
+
+    <div class="space-y-6">
+      {[
+        { name: 'Bloodfang', element: 'Blood', hp: '200', energy: '5', speed: '3/5', difficulty: 'Easy', passive: 'Crimson Recovery — Heal 2 HP per Blood card played', bestBuild: 'Full Blood DPS', desc: 'The default character with balanced stats and simple mechanics. Start here. Prioritize Blood cards and Vampiric Strike for early sustain.' },
+        { name: 'Frostveil', element: 'Frost', hp: '180', energy: '4', speed: '3/5', difficulty: 'Easy', passive: 'Chill Aura — Nearby enemies are slowed by 15%', bestBuild: 'Frost Control', desc: 'Passive crowd control makes Frostveil very forgiving. Build around Blizzard and Frozen Armor. Best for learning enemy patterns.' },
+        { name: 'Shadowmancer', element: 'Shadow', hp: '140', energy: '6', speed: '5/5', difficulty: 'Medium', passive: 'Shadow Step — Teleport a short distance every 10 seconds', bestBuild: 'Shadow Assassin', desc: 'High mobility, low HP. The Shadow Step passive lets you dodge attacks other characters cannot. Skill-dependent but incredibly powerful when mastered.' },
+        { name: 'Stormcaller', element: 'Lightning', hp: '160', energy: '5', speed: '4/5', difficulty: 'Medium', passive: 'Static Discharge — Lightning damage chains to 1 extra enemy', bestBuild: 'Lightning Burst', desc: 'Fast wave clearer. Best for farming runs and Endless Mode early floors. Weaker against bosses without backup element.' },
+        { name: 'Crimson Lord', element: 'Blood', hp: '250', energy: '5', speed: '2/5', difficulty: 'Hard', passive: 'Blood Rage — +3% damage per missing 1% HP', bestBuild: 'Blood DPS (Aggressive)', desc: 'High risk, high reward. At low HP, Crimson Lord deals insane damage. Pair with strong healing cards. Phoenix Feather is essential.' },
+        { name: 'The Reaper', element: 'Shadow', hp: '120', energy: '7', speed: '5/5', difficulty: 'Very Hard', passive: 'Death Mark — Killed enemies leave behind a damage zone', bestBuild: 'Shadow Assassin (Glass Cannon)', desc: 'Secret character. Extremely fragile but has the highest damage ceiling. Only for expert players. Reward for mastering the game.' },
+      ].map(c => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-lg font-bold text-white">{c.name}</h2>
+            <span class="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-400">{c.difficulty}</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-sm">
+            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">HP: </span><span class="text-white font-semibold">{c.hp}</span></div>
+            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Energy: </span><span class="text-white font-semibold">{c.energy}</span></div>
+            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Speed: </span><span class="text-white font-semibold">{c.speed}</span></div>
+            <div class="bg-gray-800 rounded-lg px-3 py-1.5"><span class="text-gray-500">Element: </span><span class="text-white font-semibold">{c.element}</span></div>
+          </div>
+          <p class="text-sm text-red-400 mb-1"><strong>Passive:</strong> {c.passive}</p>
+          <p class="text-sm text-gray-400 mb-1"><strong>Best Build:</strong> {c.bestBuild}</p>
+          <p class="text-sm text-gray-500">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+      <a href="/guides/unlock-characters" class="text-red-400 hover:underline">How to Unlock Characters</a>
+      <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
+    </div>
+  </article>
+</BaseLayout>
