@@ -11,87 +11,194 @@ const { title, description, canonical } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" style="scroll-behavior:smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <SEO title={title} description={description} canonical={canonical} />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{crimson:{50:'#fef2f2',100:'#fee2e2',200:'#fecaca',400:'#f87171',500:'#ef4444',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d'}}}}};</script>
+  <script>tailwind.config={theme:{extend:{colors:{crimson:{50:'#fef2f2',100:'#fee2e2',200:'#fecaca',400:'#f87171',500:'#e94560',600:'#dc2626',700:'#b91c1c',800:'#991b1b',900:'#7f1d1d'}}}}};</script>
   <style>
-    /* Wiki-style info boxes */
-    .info-box { background: linear-gradient(135deg, #1e293b, #0f172a); border-left: 4px solid #3b82f6; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
-    .tip-box { background: linear-gradient(135deg, #064e3b20, #022c2220); border: 1px solid #065f46; border-left: 4px solid #10b981; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
-    .warn-box { background: linear-gradient(135deg, #78350f20, #451a0320); border: 1px solid #92400e; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
-    .danger-box { background: linear-gradient(135deg, #7f1d1d20, #450a0a20); border: 1px solid #991b1b; border-left: 4px solid #ef4444; border-radius: 0 12px 12px 0; padding: 1rem 1.25rem; margin: 1rem 0; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --accent:#e94560;--accent-hover:#f25a72;--accent-glow:rgba(233,69,96,0.2);
+      --bg-dark:#1a1a2e;--bg-card:#16213e;--bg-card-hover:#1c2a4a;
+      --border:#0f3460;--border-hover:rgba(233,69,96,0.3);
+      --text:#eee;--text-muted:#8892a4;--text-light:#a0a0a0;
+      --shadow-sm:0 2px 8px rgba(0,0,0,0.2);--shadow-md:0 8px 24px rgba(0,0,0,0.3);
+      --shadow-glow:0 4px 20px rgba(233,69,96,0.15);
+      --radius:10px;--transition:0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    html{scroll-behavior:smooth;font-size:16px}
+    body{
+      font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',Arial,sans-serif;
+      background:var(--bg-dark);color:var(--text);line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:var(--accent);text-decoration:none;transition:color var(--transition)}
+    a:hover{color:var(--accent-hover)}
 
-    /* Table of contents */
-    .toc { background: #111827; border: 1px solid #1f2937; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
-    .toc-title { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #9ca3af; margin-bottom: 0.75rem; }
-    .toc ol { list-style: decimal; padding-left: 1.25rem; }
-    .toc li { margin-bottom: 0.4rem; }
-    .toc a { color: #93c5fd; text-decoration: none; font-size: 0.92rem; }
-    .toc a:hover { color: #60a5fa; text-decoration: underline; }
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg-dark)}
+    ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+    /* Header */
+    .header{
+      background:var(--bg-card);border-bottom:2px solid var(--accent);
+      padding:0.9rem 0;position:sticky;top:0;z-index:30;
+    }
+    .wrap{max-width:1200px;margin:0 auto;padding:0 1.25rem}
+    .header .wrap{display:flex;align-items:center;justify-content:space-between}
+    .header .logo{font-size:1.2rem;font-weight:800;color:#fff;transition:color var(--transition)}
+    .header .logo:hover{color:var(--accent)}
+    .header .logo span{color:var(--accent)}
+    .header nav{display:flex;gap:0.35rem}
+    .header nav a{
+      padding:0.4rem 0.85rem;border-radius:8px;font-size:0.88rem;font-weight:500;
+      color:var(--text-muted);transition:all var(--transition)
+    }
+    .header nav a:hover{background:rgba(233,69,96,0.1);color:var(--accent)}
+
+    /* Main layout */
+    .wiki-layout{display:grid;grid-template-columns:220px 1fr;gap:2rem}
 
     /* Sidebar */
-    .sidebar-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border-radius: 8px; color: #9ca3af; text-decoration: none; font-size: 0.88rem; transition: all 0.15s; }
-    .sidebar-link:hover { background: #1f2937; color: #e5e7eb; }
-    .sidebar-link.active { background: #dc262610; color: #f87171; font-weight: 600; }
+    .sidebar{position:sticky;top:5rem;align-self:start}
+    .sidebar-title{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-light);margin-bottom:0.6rem;padding:0 0.5rem}
+    .sidebar-link{
+      display:flex;align-items:center;gap:0.5rem;padding:0.5rem 0.75rem;
+      border-radius:8px;color:var(--text-muted);font-size:0.88rem;
+      transition:all var(--transition)
+    }
+    .sidebar-link:hover{background:rgba(233,69,96,0.08);color:var(--accent);transform:translateX(4px)}
+
+    /* Hero banner */
+    .hero{
+      background:linear-gradient(135deg,rgba(233,69,96,0.12),rgba(26,26,46,0.95));
+      border:1px solid var(--border);border-radius:var(--radius);padding:2.5rem;margin-bottom:1.5rem
+    }
+    .hero h1{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.5rem;line-height:1.2}
+    .hero p{color:var(--text-muted);max-width:600px}
+    .hero .badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
+    .badge{font-size:0.78rem;background:rgba(233,69,96,0.1);color:var(--accent);padding:0.3rem 0.75rem;border-radius:20px;border:1px solid rgba(233,69,96,0.2)}
+
+    /* Cards */
+    .card{
+      background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+      padding:1.5rem;margin-bottom:1.25rem;
+      box-shadow:var(--shadow-sm);transition:all var(--transition)
+    }
+    .card:hover{box-shadow:var(--shadow-md);border-color:var(--border-hover);transform:translateY(-2px)}
+
+    .card-link{
+      display:block;background:var(--bg-card);border:1px solid var(--border);
+      border-radius:var(--radius);padding:1.5rem;
+      box-shadow:var(--shadow-sm);transition:all var(--transition);
+      cursor:pointer
+    }
+    .card-link:hover{box-shadow:var(--shadow-glow);border-color:var(--accent);transform:translateY(-3px)}
+
+    .card-link h3{transition:color var(--transition)}
+    .card-link:hover h3{color:var(--accent)}
+
+    /* Info boxes */
+    .info-box{background:rgba(15,52,96,0.5);border-left:4px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin:1rem 0}
+    .tip-box{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-left:4px solid #10b981;border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin:1rem 0}
+    .warn-box{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);border-left:4px solid #f59e0b;border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin:1rem 0}
+    .danger-box{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-left:4px solid #ef4444;border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin:1rem 0}
+    .formula-box{background:rgba(233,69,96,0.08);border:1px solid rgba(233,69,96,0.15);border-radius:var(--radius);padding:1rem 1.5rem;text-align:center;font-weight:600;margin:1rem 0}
+
+    /* Tables */
+    table{width:100%;border-collapse:collapse;font-size:0.9rem;margin:0.75rem 0}
+    thead th{padding:0.6rem 0.8rem;font-weight:600;text-align:left;border-bottom:2px solid var(--accent)}
+    tbody td{padding:0.5rem 0.8rem;border-bottom:1px solid var(--border)}
+    tbody tr{transition:background var(--transition)}
+    tbody tr:hover{background:rgba(233,69,96,0.06)}
+    tbody tr:nth-child(even){background:rgba(15,52,96,0.12)}
+    tbody tr:nth-child(even):hover{background:rgba(233,69,96,0.1)}
+
+    /* TOC */
+    .toc{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin:1.25rem 0}
+    .toc-title{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-light);margin-bottom:0.6rem}
+    .toc ol{padding-left:1.25rem}
+    .toc li{margin-bottom:0.35rem}
+    .toc a{color:var(--text-muted);font-size:0.9rem;transition:color var(--transition)}
+    .toc a:hover{color:var(--accent)}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;align-items:center;gap:0.4rem;padding:0.55rem 1.1rem;
+      border-radius:8px;font-size:0.88rem;font-weight:600;border:none;cursor:pointer;
+      transition:all var(--transition)
+    }
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-hover);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
+    .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text-muted)}
+    .btn-outline:hover{border-color:var(--accent);color:var(--accent);background:rgba(233,69,96,0.05)}
+
+    /* Article */
+    article h1{font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.25rem}
+    article h2{font-size:1.4rem;font-weight:700;color:#fff;margin:2rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:1px solid var(--border)}
+    article h3{font-size:1.05rem;font-weight:600;color:#ddd;margin:1.25rem 0 0.4rem}
+    article p{margin-bottom:0.7rem;color:var(--text-muted)}
+    article ul,article ol{margin-bottom:1rem;padding-left:1.25rem}
+    article li{margin-bottom:0.3rem;color:var(--text-muted)}
+    article code{background:rgba(15,52,96,0.6);padding:0.1rem 0.35rem;border-radius:4px;font-size:0.88em}
+    article strong{color:#eee}
 
     /* Stat grid */
-    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.5rem; }
-    .stat-item { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 0.75rem 1rem; text-align: center; }
-    .stat-value { font-size: 1.2rem; font-weight: 700; color: white; }
-    .stat-label { font-size: 0.75rem; color: #6b7280; margin-top: 0.15rem; }
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.5rem}
+    .stat-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:0.7rem 0.8rem;text-align:center;transition:all var(--transition)}
+    .stat-item:hover{border-color:var(--accent);box-shadow:var(--shadow-glow)}
+    .stat-value{font-size:1.3rem;font-weight:700;color:var(--accent)}
+    .stat-label{font-size:0.72rem;color:var(--text-light);margin-top:0.1rem}
 
-    /* Tier badges */
-    .tier-s { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1a1a1a; }
-    .tier-a { background: linear-gradient(135deg, #34d399, #10b981); color: #1a1a1a; }
-    .tier-b { background: linear-gradient(135deg, #60a5fa, #3b82f6); color: white; }
-    .tier-c { background: linear-gradient(135deg, #9ca3af, #6b7280); color: white; }
-    .tier-d { background: linear-gradient(135deg, #f87171, #ef4444); color: white; }
+    /* Table of contents mobile */
+    .section-nav{display:flex;flex-wrap:wrap;gap:0.4rem;margin:0.5rem 0 1.25rem}
+    .section-nav a{font-size:0.82rem;padding:0.3rem 0.7rem;border-radius:6px;background:var(--bg-card);color:var(--text-muted);border:1px solid var(--border);transition:all var(--transition)}
+    .section-nav a:hover{background:rgba(233,69,96,0.1);border-color:var(--accent);color:var(--accent)}
 
-    /* Article typography */
-    article h2 { font-size: 1.5rem; font-weight: 800; color: #f1f5f9; margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid #1f2937; }
-    article h3 { font-size: 1.1rem; font-weight: 700; color: #e2e8f0; margin: 1.5rem 0 0.5rem; }
-    article p { margin-bottom: 0.75rem; line-height: 1.75; }
-    article ul, article ol { margin-bottom: 1rem; padding-left: 1.25rem; }
-    article li { margin-bottom: 0.3rem; line-height: 1.65; }
-    article code { background: #1e293b; padding: 0.1rem 0.35rem; border-radius: 4px; font-size: 0.88em; }
-    article strong { color: #e5e7eb; }
+    /* Footer */
+    footer{border-top:2px solid var(--border);margin-top:3rem;text-align:center;padding:2rem 0;color:var(--text-light);font-size:0.85rem}
 
-    /* Mobile sidebar */
-    @media (max-width: 768px) {
-      .wiki-layout { display: block !important; }
-      .sidebar { display: none; }
-      .sidebar.open { display: block; }
+    /* Ad spot */
+    .ad-spot{background:var(--bg-card);border:1.5px dashed var(--border);border-radius:var(--radius);padding:2rem;text-align:center;color:var(--text-light);margin:1.25rem 0}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .wiki-layout{display:block}
+      .sidebar{display:none;position:fixed;top:0;left:0;width:260px;height:100vh;background:var(--bg-dark);z-index:40;padding:1.5rem;overflow-y:auto}
+      .sidebar.open{display:block}
+      .hero h1{font-size:1.8rem}
+      article h1{font-size:1.8rem}
+      table{font-size:0.8rem}
+      thead th,tbody td{padding:0.4rem 0.5rem}
     }
+
+    /* Hamburger */
+    .hamburger{display:none;font-size:1.5rem;color:var(--text);cursor:pointer;background:none;border:none}
+    @media(max-width:768px){.hamburger{display:block}}
   </style>
 </head>
-<body class="bg-gray-950 text-gray-300 antialiased">
-  <!-- Top bar -->
-  <header class="bg-gray-900 border-b border-gray-800 sticky top-0 z-30">
-    <div class="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-6">
-        <a href="/" class="text-lg font-extrabold text-white hover:text-red-400 transition-colors">Vampire<span class="text-red-500">Crawlers</span>.cc</a>
-        <nav class="hidden md:flex gap-1 text-sm">
-          <a href="/" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Home</a>
-          <a href="/guides/beginners-guide" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Beginner</a>
-          <a href="/guides/cards-list" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Cards</a>
-          <a href="/guides/characters-guide" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Characters</a>
-          <a href="/guides/dungeons-guide" class="px-3 py-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-colors">Dungeons</a>
-        </nav>
-      </div>
-      <button id="menu-btn" class="md:hidden text-gray-400 hover:text-white text-2xl">&#9776;</button>
+<body>
+  <header class="header">
+    <div class="wrap">
+      <a href="/" class="logo">Vampire<span>Crawlers</span>.cc</a>
+      <button class="hamburger" id="menu-btn" aria-label="Menu">&#9776;</button>
+      <nav class="nav-desktop" style="display:flex">
+        <a href="/">Home</a>
+        <a href="/guides/beginners-guide">Beginner</a>
+        <a href="/guides/cards-list">Cards</a>
+        <a href="/guides/characters-guide">Characters</a>
+        <a href="/guides/dungeons-guide">Dungeons</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Main layout: sidebar + content -->
-  <div class="max-w-7xl mx-auto px-4 py-6 wiki-layout" style="display:grid;grid-template-columns:220px 1fr;gap:2rem;">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sticky top-20 space-y-1">
-        <p class="text-xs font-semibold uppercase text-gray-500 tracking-wider mb-2 px-2">Guides</p>
+  <div class="wrap" style="padding:1.5rem 0">
+    <div class="wiki-layout">
+      <aside class="sidebar" id="sidebar">
+        <p class="sidebar-title">Navigation</p>
         <a href="/" class="sidebar-link">🏠 Home</a>
         <a href="/guides/beginners-guide" class="sidebar-link">🎓 Beginner's Guide</a>
         <a href="/guides/cards-list" class="sidebar-link">🃏 Cards List</a>
@@ -100,23 +207,21 @@ const { title, description, canonical } = Astro.props;
         <a href="/guides/dungeons-guide" class="sidebar-link">🗺️ Dungeons</a>
         <a href="/guides/unlock-guide" class="sidebar-link">🔓 Unlock Guide</a>
         <a href="/guides/faq" class="sidebar-link">❓ FAQ</a>
-        <a href="/guides/faq" class="sidebar-link">❓ FAQ</a>
-      </div>
-    </aside>
-
-    <!-- Content area -->
-    <main class="min-w-0"><slot /></main>
+      </aside>
+      <main class="content"><slot /></main>
+    </div>
   </div>
 
-  <footer class="border-t border-gray-800 mt-8">
-    <div class="max-w-7xl mx-auto px-4 py-8 text-center text-sm text-gray-600">
-      <p>Vampire Crawlers Guide &mdash; Unofficial fan resource. Not affiliated with poncle.</p>
-    </div>
+  <footer>
+    <p>Vampire Crawlers Guide &mdash; Unofficial fan resource. Not affiliated with poncle.</p>
   </footer>
 
   <script>
-    document.getElementById('menu-btn')?.addEventListener('click', () => {
-      document.getElementById('sidebar')?.classList.toggle('open');
+    document.getElementById('menu-btn').addEventListener('click',()=>{
+      document.getElementById('sidebar').classList.toggle('open');
+    });
+    document.querySelector('.content').addEventListener('click',()=>{
+      document.getElementById('sidebar').classList.remove('open');
     });
   </script>
 </body>
