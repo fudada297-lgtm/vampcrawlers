@@ -4,69 +4,113 @@ const title = 'Vampire Crawlers Unlock Guide — All Characters, Relics & Stages
 const description = 'How to unlock everything in Vampire Crawlers. All 22 characters, 15 relics, 15 stages with precise unlock requirements.';
 
 const sections = [
-  { title: 'Unlock Characters', items: [
-    'Antonio, Arca, Cavallo, Christine, Clerici, Imelda, Mortaccio, Porta — Default',
-    'Concetta, Gallo — Complete Gallo Tower',
-    'Giovanna — Complete Library Sanctum',
-    'Poppea — Complete Milk Factory',
-    'Pugnala — Complete Berserk Wood',
-    'MissingN0 — Hidden character (secret condition)',
-    'Dommario, Gennaro, Krochi, Lama, O\'Sole, Pasqualina, Poe, Ramba — Various dungeon/level milestones',
-  ]},
-  { title: 'Unlock Relics', items: [
-    'Combo Stack — Tutorial (automatic)',
-    'Milky Way Map, Rilevatore — Complete first 2 dungeons',
-    'Gem Hammer — Find in Mad Forest',
-    'Guiding Light — Find in Inlaid Library',
-    'Grim Grimoire — Find in Library West Wing',
-    'Polentir — Find in Furious Forest',
-    'Arcana Finder — Find in Library Sanctum',
-    'Stardust Anvil, Overkill — Find in Teeny Bridge',
-    'Bomba Infernale — Find in Dairy Plant',
-    'Ultimate Ultra Overkill — Find in Curd Refinery',
-    'Lapidary Loupe, Sorceress\' Tears — Find in Gallo Tower',
-    'Ovenkilt — Find in Cappella Ultima',
-  ]},
-  { title: 'Unlock Stages', items: [
-    'Mad Forest — Starting dungeon',
-    'Inlaid Library — Reach Level 10 in Mad Forest',
-    'Furious Forest — Complete Mad Forest',
-    'Library West Wing — Complete Inlaid Library',
-    'Teeny Bridge — Reach Level 15 in Inlaid Library',
-    'Berserk Wood — Complete Furious Forest',
-    'Library Sanctum — Complete Library West Wing',
-    'Dairy Plant — Complete Teeny Bridge',
-    'Milk Factory — Complete Dairy Plant',
-    'Weeny Bridge — Reach Level 15 in Dairy Plant',
-    'Curd Refinery — Complete Milk Factory',
-    'Gallo Tower — Complete Weeny Bridge',
-    'Meany Bridge — Defeat Giant Enemy Crab in Gallo Tower',
-    'Capella Magna — Complete Meany Bridge',
-    'Cappella Ultima — Complete Capella Magna',
-  ]},
+  {
+    title: 'Unlock Characters',
+    icon: '👤',
+    items: [
+      { item: 'Antonio', cond: 'Default (starter)' },
+      { item: 'Arca', cond: 'Default (starter)' },
+      { item: 'Cavallo', cond: 'Default (starter)' },
+      { item: 'Christine', cond: 'Default (starter)' },
+      { item: 'Clerici', cond: 'Default (starter)' },
+      { item: 'Imelda', cond: 'Default (starter)' },
+      { item: 'Mortaccio', cond: 'Default (starter)' },
+      { item: 'Porta', cond: 'Default (starter)' },
+      { item: 'Concetta', cond: 'Complete Gallo Tower' },
+      { item: 'Gallo', cond: 'Complete Gallo Tower' },
+      { item: 'Giovanna', cond: 'Complete Library Sanctum' },
+      { item: 'Poppea', cond: 'Complete Milk Factory' },
+      { item: 'Pugnala', cond: 'Complete Berserk Wood' },
+      { item: 'MissingN0', cond: 'Hidden — secret condition (unknown trigger)' },
+      { item: 'Gennaro', cond: 'Reach Level 20 in Inlaid Library' },
+      { item: 'Krochi', cond: 'Complete Dairy Plant' },
+      { item: 'Pasqualina', cond: 'Complete Dairy Plant' },
+      { item: 'Dommario', cond: 'Reach Level 20 total (any dungeon)' },
+      { item: 'Poe', cond: 'Reach Level 30 in Mad Forest' },
+      { item: "O'Sole", cond: 'Complete Curd Refinery' },
+      { item: 'Lama', cond: 'Complete Capella Magna' },
+      { item: 'Ramba', cond: 'Complete Cappella Ultima' },
+    ],
+  },
+  {
+    title: 'Unlock Relics',
+    icon: '💎',
+    items: [
+      { item: 'Combo Stack', cond: 'Tutorial — received automatically' },
+      { item: 'Milky Way Map', cond: 'Complete any 2 dungeons' },
+      { item: 'Rilevatore', cond: 'Complete any 2 dungeons' },
+      { item: 'Gem Hammer', cond: 'Break crate in Mad Forest (near end)' },
+      { item: 'Guiding Light', cond: 'Break object in Inlaid Library' },
+      { item: 'Grim Grimoire', cond: 'Break object in Library West Wing' },
+      { item: 'Polentir', cond: 'Break object in Furious Forest' },
+      { item: 'Arcana Finder', cond: 'Break object in Library Sanctum' },
+      { item: 'Stardust Anvil', cond: 'Break object in Teeny Bridge' },
+      { item: 'Overkill', cond: 'Break object in Teeny Bridge (separate location)' },
+      { item: 'Bomba Infernale', cond: 'Break object in Dairy Plant' },
+      { item: 'Ultimate Ultra Overkill', cond: 'Break object in Curd Refinery' },
+      { item: 'Lapidary Loupe', cond: 'Break object in Gallo Tower' },
+      { item: "Sorceress' Tears", cond: 'Break object in Gallo Tower (separate location)' },
+      { item: 'Ovenkilt', cond: 'Break object in Cappella Ultima' },
+    ],
+  },
+  {
+    title: 'Unlock Stages',
+    icon: '🗺️',
+    items: [
+      { item: 'Mad Forest', cond: 'Starting dungeon — always available' },
+      { item: 'Inlaid Library', cond: 'Reach Level 10 in Mad Forest (survive not required)' },
+      { item: 'Furious Forest', cond: 'Complete Mad Forest (beat the boss)' },
+      { item: 'Library West Wing', cond: 'Complete Inlaid Library' },
+      { item: 'Teeny Bridge', cond: 'Reach Level 15 in Inlaid Library' },
+      { item: 'Berserk Wood', cond: 'Complete Furious Forest' },
+      { item: 'Library Sanctum', cond: 'Complete Library West Wing' },
+      { item: 'Dairy Plant', cond: 'Complete Teeny Bridge' },
+      { item: 'Milk Factory', cond: 'Complete Dairy Plant' },
+      { item: 'Weeny Bridge', cond: 'Reach Level 15 in Dairy Plant' },
+      { item: 'Curd Refinery', cond: 'Complete Milk Factory' },
+      { item: 'Gallo Tower', cond: 'Complete Weeny Bridge' },
+      { item: 'Meany Bridge', cond: 'Defeat the Giant Enemy Crab boss in Gallo Tower' },
+      { item: 'Capella Magna', cond: 'Complete Meany Bridge' },
+      { item: 'Cappella Ultima', cond: 'Complete Capella Magna — final dungeon' },
+    ],
+  },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/unlock-guide">
   <article>
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Unlock Guide</h1>
-    <p class="text-gray-500 mb-6">Everything you can unlock in Vampire Crawlers and how to get it.</p>
+    <div class="breadcrumbs"><a href="/">Home</a><span>/</span>Unlock Guide</div>
+
+    <h1>Unlock Guide</h1>
+    <p class="lead">Everything you can unlock in Vampire Crawlers and exactly how to get it — characters, relics, and stages in one place.</p>
+
+    <div class="tip-box">
+      <strong>Level unlocks are permanent.</strong> You don't need to survive the run — just hit the required level, and the unlock is yours. Dying immediately after still counts.
+    </div>
 
     {sections.map(s => (
-      <div class="mb-6">
-        <h2 class="text-xl font-bold text-white mb-3">{s.title}</h2>
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-          <ul class="space-y-1.5 text-gray-400 text-sm">
-            {s.items.map(item => <li class="flex gap-2"><span class="text-red-500 mt-1">•</span> {item}</li>)}
-          </ul>
+      <div style="margin-bottom:2rem">
+        <h2 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem">
+          <span>{s.icon}</span> {s.title}
+          <span style="font-size:0.78rem;color:var(--text-muted);font-weight:400">({s.items.length} total)</span>
+        </h2>
+        <div class="card" style="padding:1rem 1.25rem">
+          <div style="display:flex;flex-direction:column;gap:0.35rem">
+            {s.items.map(item => (
+              <div style="display:flex;align-items:baseline;gap:0.75rem;padding:0.35rem 0;border-bottom:1px solid var(--border-subtle);font-size:0.9rem">
+                <span style="color:var(--text-muted);font-size:0.6rem;flex-shrink:0;margin-top:0.25rem">◆</span>
+                <strong style="min-width:140px;flex-shrink:0">{item.item}</strong>
+                <span style="color:var(--text-secondary)">{item.cond}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     ))}
 
-    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
-      <a href="/guides/characters-guide" class="text-red-400 hover:underline font-medium">Characters Guide →</a>
-      <a href="/guides/relics-guide" class="text-red-400 hover:underline font-medium">Relics Guide →</a>
-      <a href="/guides/dungeons-guide" class="text-red-400 hover:underline font-medium">Dungeons Guide →</a>
+    <div class="bottom-nav">
+      <a href="/guides/relics-guide">← Relics Guide</a>
+      <a href="/guides/faq" class="next">FAQ →</a>
     </div>
   </article>
 </BaseLayout>

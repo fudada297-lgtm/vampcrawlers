@@ -4,51 +4,68 @@ const title = 'Vampire Crawlers Relics Guide — All 15 Relics, Effects & Locati
 const description = 'Complete Vampire Crawlers relics guide. All 15 relics with permanent effects, dungeon locations, and unlock requirements. Combo Stack, Grim Grimoire, Overkill and more.';
 
 const relics = [
-  { name: 'Combo Stack', effect: 'Play cards in ascending mana cost order for combo multiplier bonus', location: 'Tutorial', note: 'Received automatically' },
-  { name: 'Milky Way Map', effect: 'Shows enemy positions on the mini-map', location: 'Default', note: 'Unlocks after first 2 dungeons' },
-  { name: 'Rilevatore', effect: 'Shows weapon effect previews against enemies', location: 'Default', note: 'Unlocks after first 2 dungeons' },
-  { name: 'Gem Hammer', effect: 'Unlock the ability to socket gems into cards', location: 'Mad Forest' },
-  { name: 'Guiding Light', effect: 'Shows destructible light sources on mini-map', location: 'Inlaid Library' },
-  { name: 'Grim Grimoire', effect: 'Pause menu shows discovered card evolutions & combos', location: 'Library West Wing' },
-  { name: 'Polentir', effect: 'Unlock the Fortune Teller tent in the Village (Arcana system)', location: 'Furious Forest' },
-  { name: 'Arcana Finder', effect: 'Random Arcana chests appear in dungeons', location: 'Library Sanctum' },
-  { name: 'Stardust Anvil', effect: 'Unlock the Blacksmith in the Village — add gem slots to cards', location: 'Teeny Bridge' },
-  { name: 'Overkill', effect: 'After beating a boss, keep attacking for bonus gold (cap: 500)', location: 'Teeny Bridge' },
-  { name: 'Bomba Infernale', effect: 'One-click clear all enemies on Floor 1 of any completed dungeon', location: 'Dairy Plant' },
-  { name: 'Ultimate Ultra Overkill', effect: 'Increase Overkill gold cap from 500 to 5,000', location: 'Curd Refinery' },
-  { name: 'Lapidary Loupe', effect: 'Unlock Jeweler counter — adjust gem drop rates or ban specific gems', location: 'Gallo Tower' },
-  { name: "Sorceress' Tears", effect: 'Adds a "Speed Up" button to the world map (fast mode)', location: 'Gallo Tower' },
-  { name: 'Ovenkilt', effect: 'Overkill triggers on the last enemy of every encounter, but chests no longer give gold', location: 'Cappella Ultima', note: 'Final relic' },
+  { name: 'Combo Stack', effect: 'Play cards in ascending mana cost order for a growing damage multiplier. <strong>Core mechanic.</strong>', location: 'Tutorial', tier: 'Essential', note: 'Received automatically. Never disable this.' },
+  { name: 'Milky Way Map', effect: 'Shows enemy positions and types on the dungeon mini-map before each encounter.', location: 'Default', tier: 'Utility', note: 'Unlocks after completing any 2 dungeons.' },
+  { name: 'Rilevatore', effect: 'See weapon effect previews when hovering over enemies — damage, status, and hit chances.', location: 'Default', tier: 'Utility', note: 'Unlocks after completing any 2 dungeons.' },
+  { name: 'Gem Hammer', effect: 'Unlock the <strong>Blacksmith</strong> in the Village. Socket gems into cards for permanent stat bonuses.', location: 'Mad Forest', tier: 'Essential', note: 'Found in a breakable crate near the end of Mad Forest.' },
+  { name: 'Guiding Light', effect: 'Highlight destructible objects (barrels, crates, torches) on the mini-map. Makes relic hunting much easier.', location: 'Inlaid Library', tier: 'High', note: 'Get this early — helps find all other relics.' },
+  { name: 'Grim Grimoire', effect: 'Pause menu shows all discovered card evolutions & combos. Tracks your collection.', location: 'Library West Wing', tier: 'High', note: 'Invaluable for planning evolutions.' },
+  { name: 'Polentir', effect: 'Unlock the <strong>Fortune Teller</strong> tent in the Village. Grants access to the Arcana system (run-wide passive bonuses).', location: 'Furious Forest', tier: 'Essential', note: 'Arcanas dramatically change how runs play out.' },
+  { name: 'Arcana Finder', effect: 'Random Arcana chests spawn in dungeon floors. More Arcanas = more options before each run.', location: 'Library Sanctum', tier: 'High', note: 'Pairs with Polentir. More Arcana drops = more builds.' },
+  { name: 'Stardust Anvil', effect: 'Unlock the <strong>Blacksmith\'s gem slotting</strong> — add up to 3 gem slots per card.', location: 'Teeny Bridge', tier: 'Essential', note: 'Two relics in Teeny Bridge. High priority.' },
+  { name: 'Overkill', effect: 'After beating a boss, keep attacking during the "overkill window" for bonus gold. Cap: <strong>500 gold</strong>.', location: 'Teeny Bridge', tier: 'Essential', note: 'Two relics in Teeny Bridge. Pairs with Ultimate Ultra Overkill.' },
+  { name: 'Bomba Infernale', effect: 'One-click clear all enemies on Floor 1 of any dungeon you\'ve previously completed. Saves time farming.', location: 'Dairy Plant', tier: 'Utility', note: 'Great for speedrunning or farming specific floors.' },
+  { name: 'Ultimate Ultra Overkill', effect: 'Increase Overkill gold cap from 500 to <strong>5,000</strong>. 10x more gold from overkill!', location: 'Curd Refinery', tier: 'High', note: 'Must have Overkill first. Transforms gold economy.' },
+  { name: 'Lapidary Loupe', effect: 'Unlock the <strong>Jeweler</strong> counter — adjust gem drop rates or ban specific gem types.', location: 'Gallo Tower', tier: 'High', note: 'Lets you target-farm specific gem colors for your build.' },
+  { name: "Sorceress' Tears", effect: 'Adds a <strong>"Speed Up"</strong> button to the world map. 2x animation speed for faster dungeon traversal.', location: 'Gallo Tower', tier: 'Utility', note: 'Quality of life. Makes replays much faster.' },
+  { name: 'Ovenkilt', effect: 'Overkill triggers on the <strong>last enemy of every encounter</strong>, but chests no longer give gold. Trade-off relic.', location: 'Cappella Ultima', tier: 'Endgame', note: 'Final relic. Pairs with Overkill + Ultimate Ultra Overkill. Can toggle off if you need chest gold.' },
 ];
+
+const tierColors = { Essential: 'var(--crimson)', High: 'var(--gold)', Utility: 'var(--blue)', Endgame: 'var(--purple)' };
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/relics-guide">
   <article>
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Relics Guide</h1>
-    <p class="text-gray-500 mb-6">All 15 relics — permanent upgrades, where to find them, and what they do.</p>
+    <div class="breadcrumbs"><a href="/">Home</a><span>/</span>Relics Guide</div>
 
-    <div class="tip-box"><strong>Important:</strong> Relics are permanent once collected. You can toggle them on/off in the Museum in the Village. No need to equip them.</div>
+    <h1>Relics Guide</h1>
+    <p class="lead">All 15 relics — permanent upgrades hidden in dungeons. Once collected, they stay active forever (can be toggled in the Museum).</p>
 
-    <div class="space-y-3">
+    <div class="info-box">
+      <strong>How to find relics:</strong> Destroy breakable objects (barrels, crates, torches) in dungeons. Each relic is in a <strong>specific dungeon</strong>. The <em>Guiding Light</em> relic (from Inlaid Library) highlights destructibles on your mini-map — get this early.
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+      {Object.entries(tierColors).map(([tier, color]) => (
+        <span style="font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.35rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{color}"></span>
+          {tier}
+        </span>
+      ))}
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.5rem">
       {relics.map((r, i) => (
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4">
-          <div class="flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <h3 class="font-bold text-white">{i+1}. {r.name}</h3>
-              <p class="text-sm text-gray-400 mt-0.5">{r.effect}</p>
+        <div class="relic-card">
+          <div style="flex:1;min-width:250px">
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem">
+              <span style="font-size:0.78rem;font-weight:700;color:var(--text-muted)">#{i+1}</span>
+              <h3>{r.name}</h3>
+              <span style="font-size:0.7rem;padding:0.1rem 0.5rem;border-radius:10px;background:rgba(255,255,255,0.04);color:{tierColors[r.tier]}">{r.tier}</span>
             </div>
-            <div class="text-right">
-              <span class="text-xs bg-gray-800 text-gray-300 px-2 py-0.5 rounded">{r.location}</span>
-              {r.note && <p class="text-xs text-gray-500 mt-0.5">{r.note}</p>}
-            </div>
+            <p>{r.effect}</p>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <span class="relic-location">{r.location}</span>
+            {r.note ? <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.25rem">{r.note}</p> : ''}
           </div>
         </div>
       ))}
     </div>
 
-    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
-      <a href="/guides/cards-list" class="text-red-400 hover:underline font-medium">Cards List →</a>
-      <a href="/guides/dungeons-guide" class="text-red-400 hover:underline font-medium">Dungeons Guide →</a>
+    <div class="bottom-nav">
+      <a href="/guides/dungeons-guide">← Dungeons Guide</a>
+      <a href="/guides/unlock-guide" class="next">Unlock Guide →</a>
     </div>
   </article>
 </BaseLayout>

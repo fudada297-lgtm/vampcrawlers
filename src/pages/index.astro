@@ -1,16 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
 const title = 'Vampire Crawlers Wiki & Guide — Cards, Characters, Relics, Dungeons';
 const description = 'Complete Vampire Crawlers guide: all 37 attack cards, 22 characters, 15 relics, 15 dungeons, unlock requirements, and beginner tips. Updated May 2026.';
 
 const guides = [
-  { emoji:'🎓', title:'Beginner\'s Guide', desc:'New to Vampire Crawlers? Learn the turn-based deckbuilder basics.', slug:'beginners-guide', color:'blue' },
-  { emoji:'🃏', title:'Cards List', desc:'Complete catalog: 37 Attack, 7 Defense, 6 Mana, 18 Stat Boost cards.', slug:'cards-list', color:'red' },
-  { emoji:'👤', title:'Characters', desc:'All 22 characters with stats, effects, and how to unlock them.', slug:'characters-guide', color:'green' },
-  { emoji:'💎', title:'Relics Guide', desc:'15 relics with permanent effects and dungeon locations.', slug:'relics-guide', color:'cyan' },
-  { emoji:'🗺️', title:'Dungeons', desc:'All 15 stages with unlock requirements and rewards.', slug:'dungeons-guide', color:'purple' },
-  { emoji:'🔓', title:'Unlocks', desc:'How to unlock every character, relic, and stage.', slug:'unlock-guide', color:'yellow' },
-  { emoji:'❓', title:'FAQ', desc:'Frequently asked questions about Vampire Crawlers.', slug:'faq', color:'gray' },
+  { icon: '🎓', title: "Beginner's Guide", desc: 'New to Vampire Crawlers? Learn the turn-based deckbuilder basics, combat mechanics, and early game strategy.', slug: 'beginners-guide', iconClass: 'icon-blue' },
+  { icon: '🃏', title: 'Cards List', desc: 'Complete catalog: 37 Attack, 7 Defense, 6 Mana, 18 Stat Boost cards with mana costs and effects.', slug: 'cards-list', iconClass: 'icon-red' },
+  { icon: '👤', title: 'Characters', desc: 'All 22 characters with stats, Crawler effects, trigger conditions, and unlock requirements.', slug: 'characters-guide', iconClass: 'icon-green' },
+  { icon: '💎', title: 'Relics Guide', desc: '15 permanent relics with effects and dungeon locations. Essential for progression.', slug: 'relics-guide', iconClass: 'icon-gold' },
+  { icon: '🗺️', title: 'Dungeons', desc: 'All 15 stages with difficulty ratings, unlock requirements, boss info, and rewards.', slug: 'dungeons-guide', iconClass: 'icon-purple' },
+  { icon: '🔓', title: 'Unlock Guide', desc: 'How to unlock every character, relic, and stage in one place.', slug: 'unlock-guide', iconClass: 'icon-teal' },
+  { icon: '❓', title: 'FAQ', desc: 'Frequently asked questions about Vampire Crawlers game mechanics and progression.', slug: 'faq', iconClass: 'icon-blue' },
 ];
 ---
 
@@ -20,43 +21,75 @@ const guides = [
     "@type": "WebSite",
     "name": "Vampire Crawlers Guide",
     "url": "https://vampcrawlers.cc",
-    "description": "${description}"
+    "description": "${description}",
+    "about": {
+      "@type": "VideoGame",
+      "name": "Vampire Crawlers",
+      "author": { "@type": "Organization", "name": "poncle" },
+      "datePublished": "2026-04-21",
+      "genre": ["Turn-Based", "Deckbuilder", "Roguelite"]
+    }
   }`} />
 
-  <div class="bg-gradient-to-br from-red-900/40 via-gray-900 to-gray-950 border border-gray-800 rounded-xl p-8 mb-6">
-    <div>
-      <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers <span class="text-red-500">Wiki</span></h1>
-      <p class="text-gray-400 max-w-2xl">Complete guide to poncle's turn-based deckbuilder. Released April 21, 2026 on Steam, Xbox, PS5 & Switch. Over 1 million players in the first week.</p>
-      <div class="flex flex-wrap gap-2 mt-4">
-        <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">Turn-Based Deckbuilder</span>
-        <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">37 Attack Cards</span>
-        <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">22 Characters</span>
-        <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">15 Relics</span>
-        <span class="text-xs bg-gray-800 text-gray-400 px-2.5 py-1 rounded-full">15 Dungeons</span>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="badges">
+        <span class="badge">Turn-Based Deckbuilder</span>
+        <span class="badge">37 Attack Cards</span>
+        <span class="badge">22 Characters</span>
+        <span class="badge">15 Relics</span>
+        <span class="badge">15 Dungeons</span>
       </div>
+      <h1 style="margin-top:1rem">Vampire Crawlers <span class="highlight">Wiki</span></h1>
+      <p>The complete unofficial guide to poncle's turn-based deckbuilder. Released April 21, 2026 on Steam, Xbox, PS5 &amp; Switch.</p>
     </div>
   </div>
 
-  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
-    {guides.map(g => (
-      <a href={`/guides/${g.slug}`} class={`bg-gray-900 border border-gray-800 hover:border-${g.color}-500/50 rounded-xl p-5 group transition-all hover:bg-gray-800/50`}>
-        <span class="text-2xl">{g.emoji}</span>
-        <h3 class={`font-bold text-white mt-2 group-hover:text-${g.color}-400 transition-colors`}>{g.title}</h3>
-        <p class="text-sm text-gray-500 mt-1">{g.desc}</p>
-      </a>
-    ))}
+  <!-- Guide Cards -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Guides</h2>
+      <span class="section-line"></span>
+    </div>
+    <div class="grid-3">
+      {guides.map(g => (
+        <a href={`/guides/${g.slug}`} class="card-link">
+          <span class={`icon-card ${g.iconClass}`}>{g.icon}</span>
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+        </a>
+      ))}
+    </div>
   </div>
 
-  <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6">
-    <h2 class="text-xl font-bold text-white mb-3">Game Overview</h2>
-    <p class="text-gray-400 leading-relaxed">Vampire Crawlers is a casual turn-based deckbuilder with roguelite elements from poncle, the creators of Vampire Survivors. Build decks, explore dungeons, and unleash powerful combos. The game features color-coded cards — <span class="text-red-400">Attack (Red)</span>, <span class="text-blue-400">Defense (Blue)</span>, <span class="text-yellow-400">Stat Boost (Yellow)</span>, <span class="text-purple-400">Mana (Purple)</span>, <span class="text-teal-400">Character (Teal)</span>, and <span class="text-gray-400">Wild (White)</span>. Progress through 15 dungeons, unlock 22 characters, and collect 15 permanent relics.</p>
-    <div class="stat-grid mt-4">
+  <!-- Game Overview -->
+  <div class="card" style="padding:2rem;margin-top:0.5rem">
+    <h2 style="font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-bottom:1rem">Game Overview</h2>
+    <p style="color:var(--text-secondary);font-size:0.93rem;line-height:1.7">
+      Vampire Crawlers is a casual turn-based deckbuilder with roguelite elements from <strong>poncle</strong>, the creators of Vampire Survivors. Build decks, explore dungeons, and unleash powerful combos. The game features six card types &mdash;
+      <span class="c-red">Attack (Red)</span>,
+      <span class="c-blue">Defense (Blue)</span>,
+      <span class="c-yellow">Stat Boost (Yellow)</span>,
+      <span class="c-purple">Mana (Purple)</span>,
+      <span class="c-teal">Character (Teal)</span>, and
+      <span style="color:#ccc">Wild (White)</span>.
+      Progress through 15 dungeons, unlock 22 characters, and collect 15 permanent relics.
+    </p>
+
+    <div class="stat-grid" style="margin-top:1.25rem">
       <div class="stat-item"><div class="stat-value">37</div><div class="stat-label">Attack Cards</div></div>
       <div class="stat-item"><div class="stat-value">7</div><div class="stat-label">Defense Cards</div></div>
+      <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Mana Cards</div></div>
+      <div class="stat-item"><div class="stat-value">18</div><div class="stat-label">Stat Boost Cards</div></div>
       <div class="stat-item"><div class="stat-value">22</div><div class="stat-label">Characters</div></div>
       <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">Relics</div></div>
       <div class="stat-item"><div class="stat-value">15</div><div class="stat-label">Dungeons</div></div>
       <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">Card Types</div></div>
+    </div>
+
+    <div class="tip-box" style="margin-top:1.25rem">
+      <strong>Combo Stack</strong> — the most important beginner relic. Play cards in <em>ascending mana cost order</em> for a growing damage multiplier. Low-cost cards first, then ramp to finishers.
     </div>
   </div>
 </BaseLayout>

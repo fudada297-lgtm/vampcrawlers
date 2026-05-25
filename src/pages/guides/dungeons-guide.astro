@@ -4,52 +4,68 @@ const title = 'Vampire Crawlers Dungeons Guide — All 15 Stages & Unlock Requir
 const description = 'Complete Vampire Crawlers dungeon list. All 15 stages with difficulty ratings, unlock requirements, boss info, and rewards. Mad Forest to Cappella Ultima.';
 
 const dungeons = [
-  { name: 'Mad Forest', diff: 1, unlock: 'Starting dungeon', reward: 'Gem Hammer relic', note: '' },
-  { name: 'Inlaid Library', diff: 2, unlock: 'Reach Level 10 in Mad Forest', reward: 'Guiding Light relic', note: 'No need to survive — die after Level 10, unlock still counts' },
-  { name: 'Furious Forest', diff: 2, unlock: 'Complete Mad Forest', reward: 'Polentir relic', note: '' },
-  { name: 'Library West Wing', diff: 3, unlock: 'Complete Inlaid Library', reward: 'Grim Grimoire relic', note: '' },
-  { name: 'Teeny Bridge', diff: 3, unlock: 'Reach Level 15 in Inlaid Library', reward: 'Stardust Anvil + Overkill relics', note: '' },
-  { name: 'Berserk Wood', diff: 3, unlock: 'Complete Furious Forest', reward: 'Pugnala character', note: '' },
-  { name: 'Library Sanctum', diff: 4, unlock: 'Complete Library West Wing', reward: 'Arcana Finder relic + Giovanna character', note: '' },
-  { name: 'Dairy Plant', diff: 4, unlock: 'Complete Teeny Bridge', reward: 'Bomba Infernale relic', note: '' },
-  { name: 'Milk Factory', diff: 4, unlock: 'Complete Dairy Plant', reward: 'Poppea character', note: '' },
-  { name: 'Weeny Bridge', diff: 5, unlock: 'Reach Level 15 in Dairy Plant', reward: '—', note: '' },
-  { name: 'Curd Refinery', diff: 6, unlock: 'Complete Milk Factory', reward: 'Ultimate Ultra Overkill relic', note: 'Common bottleneck — make sure Milk Factory is done' },
-  { name: 'Gallo Tower', diff: 6, unlock: 'Complete Weeny Bridge', reward: 'Concetta + Gallo, Sorceress\' Tears + Lapidary Loupe', note: '' },
-  { name: 'Meany Bridge', diff: 7, unlock: 'Defeat Giant Enemy Crab in Gallo Tower', reward: '—', note: 'Must kill the Crab, not just complete Gallo Tower' },
-  { name: 'Capella Magna', diff: 8, unlock: 'Complete Meany Bridge', reward: '—', note: '' },
-  { name: 'Cappella Ultima', diff: 9, unlock: 'Complete Capella Magna', reward: 'Ovenkilt relic (final)', note: 'Final dungeon' },
+  { name: 'Mad Forest', diff: 1, chain: 'Forest', unlock: 'Starting dungeon', reward: 'Gem Hammer relic', boss: 'Giant Bat', note: '' },
+  { name: 'Inlaid Library', diff: 2, chain: 'Library', unlock: 'Reach Level 10 in Mad Forest', reward: 'Guiding Light relic', boss: 'Necronomicon', note: 'Die after Level 10 — unlock still counts' },
+  { name: 'Furious Forest', diff: 2, chain: 'Forest', unlock: 'Complete Mad Forest', reward: 'Polentir relic (Arcana system)', boss: 'Giant Bat (Enraged)', note: '' },
+  { name: 'Library West Wing', diff: 3, chain: 'Library', unlock: 'Complete Inlaid Library', reward: 'Grim Grimoire relic', boss: 'Flying Tome', note: '' },
+  { name: 'Teeny Bridge', diff: 3, chain: 'Bridge', unlock: 'Reach Level 15 in Inlaid Library', reward: 'Stardust Anvil + Overkill relics', boss: 'Troll', note: 'Two relics in one dungeon. High priority.' },
+  { name: 'Berserk Wood', diff: 3, chain: 'Forest', unlock: 'Complete Furious Forest', reward: 'Pugnala character', boss: 'Ent', note: '' },
+  { name: 'Library Sanctum', diff: 4, chain: 'Library', unlock: 'Complete Library West Wing', reward: 'Arcana Finder relic + Giovanna', boss: 'Archmage Tome', note: '' },
+  { name: 'Dairy Plant', diff: 4, chain: 'Industrial', unlock: 'Complete Teeny Bridge', reward: 'Bomba Infernale relic', boss: 'Giant Slime', note: '' },
+  { name: 'Milk Factory', diff: 4, chain: 'Industrial', unlock: 'Complete Dairy Plant', reward: 'Poppea character', boss: 'Factory Foreman', note: '' },
+  { name: 'Weeny Bridge', diff: 5, chain: 'Bridge', unlock: 'Reach Level 15 in Dairy Plant', reward: '—', boss: 'Troll Champion', note: 'No relic, but required for Gallo Tower' },
+  { name: 'Curd Refinery', diff: 6, chain: 'Industrial', unlock: 'Complete Milk Factory', reward: 'Ultimate Ultra Overkill relic', boss: 'Cheese Golem', note: 'Common bottleneck. Make sure Milk Factory is done.' },
+  { name: 'Gallo Tower', diff: 6, chain: 'Tower', unlock: 'Complete Weeny Bridge', reward: 'Concetta + Gallo, Sorceress\' Tears + Lapidary Loupe', boss: 'Giant Enemy Crab', note: 'Major milestone. 2 characters + 2 relics.' },
+  { name: 'Meany Bridge', diff: 7, chain: 'Bridge', unlock: 'Defeat Giant Enemy Crab in Gallo Tower', reward: '—', boss: 'Bridge Wyrm', note: 'Must kill the Crab in Gallo Tower first.' },
+  { name: 'Capella Magna', diff: 8, chain: 'Final', unlock: 'Complete Meany Bridge', reward: '—', boss: 'Holy Guardian', note: '' },
+  { name: 'Cappella Ultima', diff: 9, chain: 'Final', unlock: 'Complete Capella Magna', reward: 'Ovenkilt relic', boss: 'The Director', note: 'Final dungeon. Bring your best deck.' },
 ];
+
+const chainColors = { Forest: '#10b981', Library: '#8b5cf6', Bridge: '#f59e0b', Industrial: '#3b82f6', Tower: '#e94560', Final: '#f0a500' };
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/dungeons-guide">
   <article>
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Dungeons Guide</h1>
-    <p class="text-gray-500 mb-6">All 15 stages with unlock requirements and rewards. 5 branching chains.</p>
+    <div class="breadcrumbs"><a href="/">Home</a><span>/</span>Dungeons Guide</div>
 
-    <div class="tip-box"><strong>Pro Tip:</strong> You can work on multiple dungeon chains simultaneously. Don't need to finish one to start another — just hit the level threshold or complete condition for each chain separately.</div>
+    <h1>Dungeons Guide</h1>
+    <p class="lead">All 15 stages across 5 branching chains. Each chain can be progressed independently.</p>
 
-    <div class="space-y-2">
+    <div class="tip-box">
+      <strong>Pro Tip:</strong> You can work on multiple dungeon chains simultaneously. Don't need to finish one chain before starting another — just hit the level threshold or complete condition for each. The game tracks all chains independently.
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+      {Object.entries(chainColors).map(([chain, color]) => (
+        <span style="font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.35rem">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{color}"></span>
+          {chain} Chain
+        </span>
+      ))}
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.5rem">
       {dungeons.map((d, i) => (
-        <div class="bg-gray-900 border border-gray-800 rounded-xl p-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-bold bg-gray-800 w-6 h-6 rounded-full flex items-center justify-center text-gray-400">{i+1}</span>
-            <div>
-              <h3 class="font-bold text-white">{d.name}</h3>
-              <p class="text-xs text-gray-500">Unlock: {d.unlock}</p>
-            </div>
+        <div class="dungeon-card" style="border-left:3px solid {chainColors[d.chain]}">
+          <div class="dungeon-rank" style="border:1px solid {chainColors[d.chain]};color:{chainColors[d.chain]}">{i+1}</div>
+          <div class="dungeon-info">
+            <h3>{d.name}</h3>
+            <p>{d.unlock}{d.note ? ` · <em>${d.note}</em>` : ''}{d.boss ? ` · Boss: <strong>${d.boss}</strong>` : ''}</p>
           </div>
-          <div class="flex items-center gap-3 text-xs">
-            <span class="text-gray-500">Diff: {'⭐'.repeat(d.diff)}</span>
-            {d.reward !== '—' && <span class="bg-green-900/30 text-green-400 px-2 py-0.5 rounded">{d.reward}</span>}
+          <div class="dungeon-meta">
+            <span class="dungeon-diff">{'★'.repeat(d.diff)}{'☆'.repeat(9-d.diff)}</span>
+            {d.reward !== '—'
+              ? <span class="dungeon-reward">{d.reward}</span>
+              : <span style="font-size:0.75rem;color:var(--text-muted)">No reward</span>
+            }
           </div>
         </div>
       ))}
     </div>
 
-    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
-      <a href="/guides/relics-guide" class="text-red-400 hover:underline font-medium">Relics Guide →</a>
-      <a href="/guides/unlock-guide" class="text-red-400 hover:underline font-medium">Unlock Guide →</a>
+    <div class="bottom-nav">
+      <a href="/guides/characters-guide">← Characters Guide</a>
+      <a href="/guides/relics-guide" class="next">Relics Guide →</a>
     </div>
   </article>
 </BaseLayout>

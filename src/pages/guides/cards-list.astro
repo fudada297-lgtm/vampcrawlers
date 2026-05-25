@@ -2,12 +2,98 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const title = 'Vampire Crawlers Cards List — All Attack, Defense, Mana & Stat Boost Cards';
 const description = 'Complete catalog of every card in Vampire Crawlers. 37 attack cards, 7 defense cards, 6 mana cards, 18 stat boost cards with mana costs, damage, and effects.';
+
+const attackCards = [
+  {n:'Whip',m:0,d:'8',e:'Hits multiple enemies. Great combo starter.'},
+  {n:'Bone',m:0,d:'3–15',e:'Random damage spread across enemies.'},
+  {n:'Knife',m:0,d:'40',e:'Guaranteed critical hit on full-HP enemies.'},
+  {n:'Magic Wand',m:0,d:'30',e:'Auto-targets the enemy that attacked last.'},
+  {n:'Cherry Bomb',m:1,d:'18',e:'15% chance to explode, dealing AoE damage.'},
+  {n:'Fire Wand',m:1,d:'45',e:'Standard single-target damage.'},
+  {n:'Garlic',m:1,d:'10',e:'Hits front row. Inflicts Disarm (enemy skips attack).'},
+  {n:'Gatti Amari',m:1,d:'25–40',e:'10% chance to Scuffle — enemies attack each other.'},
+  {n:'Gorgeous Moon',m:1,d:'Erase',e:'Erases 1 non-boss enemy. Triggers Moonrise buff.'},
+  {n:'King Bible',m:1,d:'40',e:'40% chance to Knockback.'},
+  {n:'Runetracer',m:1,d:'15–79',e:'Bounces between enemies. +10 dmg per bounce (max 7).'},
+  {n:'Axe',m:2,d:'45',e:'Hits multiple enemies. Knockback on kill.'},
+  {n:'Bloody Tear',m:2,d:'40',e:'Multi-target. On Crit: Heal 3 HP.'},
+  {n:'Carrello',m:2,d:'45',e:'Multi-target. Guaranteed Knockback.'},
+  {n:'Celestial Dusting',m:2,d:'35',e:'Triggers Little Heart — spawns healing pickups.'},
+  {n:'Cross',m:2,d:'80',e:'High single-target damage. No extra effects.'},
+  {n:'Eight The Sparrow',m:2,d:'35',e:'Fast animation. Good for speedrunning.'},
+  {n:'Holy Wand',m:2,d:'150',e:'Auto-targets attackers. Highest dmg at 2-cost.'},
+  {n:'Lightning Ring',m:2,d:'125',e:'Consistent high damage. Reliable finisher.'},
+  {n:'Unholy Vespers',m:2,d:'120',e:'Chance to Knockback. Wide hitbox.'},
+  {n:'Vicious Hunger',m:2,d:'50–100',e:'May turn enemies into gold coins on kill.'},
+  {n:'Valkyrie Turner',m:2,d:'25',e:'Front row. Triggers Valkyrie\'s Inferno burn effect.'},
+  {n:'Death Spiral',m:3,d:'160',e:'Front row. Guaranteed Crit.'},
+  {n:'Heaven Sword',m:3,d:'100',e:'Guaranteed Crit. Pairs well with combo multiplier.'},
+  {n:'Hellfire',m:3,d:'225',e:'Chance to Knockback. Highest raw dmg at 3-cost.'},
+  {n:'NO FUTURE',m:3,d:'15',e:'Bounces and explodes on final hit. Chain reaction.'},
+  {n:'Peachone',m:3,d:'100',e:'Bombards — attacks again after every subsequent card.'},
+  {n:'Phiera Der Tuphello',m:3,d:'70',e:'Standard 3-cost attacker.'},
+  {n:'Santa Water',m:3,d:'60',e:'Burns enemies for 15 dmg/turn after attack.'},
+  {n:'Shadow Pinion',m:3,d:'90',e:'Retrigger — plays again if next card costs 2+.'},
+  {n:'Soul Eater',m:3,d:'100',e:'Front row. Heal 3 + Disarm. Sustain + control.'},
+  {n:'Thousand Edge',m:3,d:'180',e:'Pure damage. No extra effects.'},
+  {n:'Ebony Wings',m:4,d:'140',e:'Bombards after every turn. Consistent DPS.'},
+  {n:'La Borra',m:4,d:'150',e:'Burns after every turn. Stack with Santa Water.'},
+  {n:'Phieraggi',m:4,d:'350',e:'Massive single-target damage.'},
+  {n:'Thunder Loop',m:4,d:'150',e:'Attacks again at end of turn. Double value.'},
+  {n:'Mannajja',m:5,d:'79',e:'Multi-target. Raw Mana — refunds 2 mana on kill.'},
+  {n:'Pentagram',m:5,d:'Erase',e:'Erases 8 rows of enemies. Countdown: 3 turns.'},
+  {n:'Vandalier',m:5,d:'500',e:'Chance Knockback. Big Bird — hits entire screen.'},
+  {n:'Bracelet',m:'W',d:'100',e:'Wild card. Fits any deck. Reliable filler damage.'},
+];
+
+const defenseCards = [
+  {n:'Armor',m:0,e:'Add 2 Armor. Free defense — always keep one.'},
+  {n:'Golden Armor',m:1,e:'Add 4 Armor. Solid mid-cost shield.'},
+  {n:'Pummarola',m:1,e:'Recovery: Heal 2 HP after encounter ends.'},
+  {n:'Rainbow Armor',m:2,e:'Add 6 Armor. Strong shield for boss fights.'},
+  {n:'Pummadora',m:2,e:'Recovery: Heal 4 HP after encounter ends.'},
+  {n:'Clock Lancet',m:3,e:'Apply 1 Freeze — enemy skips next turn.'},
+  {n:"Hero's Armor",m:3,e:'Add 8 Armor. Maximum single-card protection.'},
+  {n:'Parm Aegis',m:'W',e:'Add 1 Armor. Wild card. Small but fits any deck.'},
+];
+
+const statCards = [
+  {n:'Bracer',m:0,e:'Hand: Increase hand size by 1 this battle.'},
+  {n:'Candle',m:0,e:'Area: Attacks deal 5% splash damage.'},
+  {n:"Skull O'Maniac",m:0,e:'Enemies +10% strength. You gain bonus XP. High risk/reward.'},
+  {n:'Spellbinder',m:0,e:'Duration: Crawlers trigger 2 more abilities this turn.'},
+  {n:'Attractorb',m:1,e:'Draw 1 card immediately.'},
+  {n:'Candella',m:1,e:'Area: Attacks deal 10% splash damage.'},
+  {n:'Crown',m:1,e:'Gain 15% XP Growth. (Destroy — one use per battle).'},
+  {n:'Hollow Heart',m:1,e:'Gain 3 Max Health. (Destroy — one use per battle).'},
+  {n:'Spinach',m:1,e:'Might: Deal 10% more damage this battle.'},
+  {n:'Stone Mask',m:1,e:'Greed: Gain 10% more coins. (Destroy).'},
+  {n:'Candelabrador',m:2,e:'Area: Attacks deal 15% splash damage.'},
+  {n:'Clover',m:2,e:'Add 10% Luck (affects crit chance + drop quality).'},
+  {n:'Crystal Crown',m:2,e:'Gain 20% XP Growth. (Destroy).'},
+  {n:'Duplicator',m:2,e:'Amount: Fire 1 more projectile this battle.'},
+  {n:'Du-Duplicator',m:2,e:'Amount: Fire 2 more projectiles. Rare card.'},
+  {n:'Forever Heart',m:2,e:'Gain 1 Max Health. Not Destroy-type — reusable.'},
+  {n:"Sprig o' Spinach",m:2,e:'Might: Deal 20% more damage this battle.'},
+  {n:'Tirajisu',m:2,e:'Revival: Gain 10% Revival chance. (Destroy).'},
+];
+
+const manaCards = [
+  {n:'Empty Tome',m:0,e:'Add 1 Mana. Essential. Free mana every cycle.'},
+  {n:'Light Tome',m:1,e:'Add 2 Mana. Net +1. Reliable mana engine.'},
+  {n:'Weighty Tome',m:2,e:'Add 3 Mana. Net +1. For mid-to-late encounters.'},
+  {n:'Ancient Tome',m:3,e:'Add 4 Mana. Net +1. For expensive finishers.'},
+  {n:'Song of Mana',m:4,e:'Deal 10 dmg (multi) + Raw Mana (refunds 2).'},
+  {n:'Wings',m:'W',e:'Reduce mana cost of next card by 1. Wild card.'},
+];
 ---
 
 <BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/cards-list">
   <article>
-    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-1">Cards List</h1>
-    <p class="text-gray-500 mb-6">Complete Vampire Crawlers card catalog. 6 card types, 80+ unique cards.</p>
+    <div class="breadcrumbs"><a href="/">Home</a><span>/</span>Cards List</div>
+
+    <h1>Cards List</h1>
+    <p class="lead">Complete Vampire Crawlers card catalog — 80+ unique cards across 6 card types. Sorted by type and mana cost.</p>
 
     <div class="toc">
       <div class="toc-title">Card Types</div>
@@ -17,59 +103,105 @@ const description = 'Complete catalog of every card in Vampire Crawlers. 37 atta
         <li><a href="#stat">Stat Boost Cards (Yellow) — 18 cards</a></li>
         <li><a href="#mana">Mana Cards (Purple) — 6 cards</a></li>
         <li><a href="#character">Character Cards (Teal) — 22 cards</a></li>
-        <li><a href="#wild">Wild & Temporary Cards</a></li>
-      </ul>
+        <li><a href="#wild">Wild &amp; Temporary Cards</a></li>
+      </ol>
     </div>
 
     <div class="info-box">
-      <strong>Card Color System:</strong> <span class="text-red-400">Red = Attack</span> · <span class="text-blue-400">Blue = Defense</span> · <span class="text-yellow-400">Yellow = Stat Boost</span> · <span class="text-purple-400">Purple = Mana</span> · <span class="text-teal-400">Teal = Character</span> · <span class="text-gray-300">White = Wild (W cost)</span> · <span class="text-gray-500">Black = Temporary (debuffs)</span>
+      <strong>Card Color System:</strong>
+      <span class="c-red">Red = Attack</span> &middot;
+      <span class="c-blue">Blue = Defense</span> &middot;
+      <span class="c-yellow">Yellow = Stat Boost</span> &middot;
+      <span class="c-purple">Purple = Mana</span> &middot;
+      <span class="c-teal">Teal = Character</span> &middot;
+      <span style="color:#ccc">White = Wild (W cost)</span>
     </div>
 
-    <h2 id="attack">Attack Cards (Red)</h2>
-    <p>Primary damage dealers. 37 cards total.</p>
-    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-red-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2">Damage</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
-      {[
-        {n:'Whip',m:0,d:'8',e:'Multiple enemies'},{n:'Bone',m:0,d:'3–15',e:'Multiple enemies'},{n:'Knife',m:0,d:'40',e:'Crit'},{n:'Magic Wand',m:0,d:'30',e:'Prioritizes attackers'},
-        {n:'Cherry Bomb',m:1,d:'18',e:'Chance to explode'},{n:'Fire Wand',m:1,d:'45',e:'—'},{n:'Garlic',m:1,d:'10',e:'Front row, Disarm'},{n:'Gatti Amari',m:1,d:'25–40',e:'Chance to Scuffle'},
-        {n:'Gorgeous Moon',m:1,d:'Erase',e:'Erase 1 enemy, Moonrise'},{n:'King Bible',m:1,d:'40',e:'Chance to Knockback'},{n:'Runetracer',m:1,d:'15–79',e:'Bounces, more damage per bounce'},
-        {n:'Axe',m:2,d:'45',e:'Multiple, Knockback'},{n:'Bloody Tear',m:2,d:'40',e:'Multiple, On Crit: Heal 3'},{n:'Carréllo',m:2,d:'45',e:'Multiple, Knockback'},
-        {n:'Celestial Dusting',m:2,d:'35',e:'Little Heart effect'},{n:'Cross',m:2,d:'80',e:'—'},{n:'Eight The Sparrow',m:2,d:'35',e:'—'},
-        {n:'Holy Wand',m:2,d:'150',e:'Prioritizes attackers'},{n:'Lightning Ring',m:2,d:'125',e:'—'},{n:'Unholy Vespers',m:2,d:'120',e:'Chance to Knockback'},
-        {n:'Vicious Hunger',m:2,d:'50–100',e:'May turn enemies into coins'},{n:'Valkyrie Turner',m:2,d:'25',e:'Front row, Valkyrie\'s Inferno'},
-        {n:'Death Spiral',m:3,d:'160',e:'Front row, Crit'},{n:'Heaven Sword',m:3,d:'100',e:'Crit'},{n:'Hellfire',m:3,d:'225',e:'Chance to Knockback'},
-        {n:'NO FUTURE',m:3,d:'15',e:'Bounces and explodes'},{n:'Peachone',m:3,d:'100',e:'Bombards after every turn'},{n:'Phiera Der Tuphello',m:3,d:'70',e:'—'},
-        {n:'Santa Water',m:3,d:'60',e:'Burns enemies after turn'},{n:'Shadow Pinion',m:3,d:'90',e:'Retrigger'},{n:'Soul Eater',m:3,d:'100',e:'Front row, Heal 3, Disarm'},
-        {n:'Thousand Edge',m:3,d:'180',e:'—'},{n:'Ebony Wings',m:4,d:'140',e:'Bombards after every turn'},{n:'La Borra',m:4,d:'150',e:'Burns after every turn'},
-        {n:'Phieraggi',m:4,d:'350',e:'—'},{n:'Thunder Loop',m:4,d:'150',e:'Attacks again at end of turn'},{n:'Mannajja',m:5,d:'79',e:'Multiple, Raw Mana'},
-        {n:'Pentagram',m:5,d:'Erase',e:'Erase 8 rows, Countdown'},{n:'Vandalier',m:5,d:'500',e:'Chance Knockback, Big Bird'},
-        {n:'Bracelet',m:'W',d:'100',e:'Wild card'},
-      ].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-red-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-center">{c.d}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
-    </tbody></table></div>
+    <!-- Attack Cards -->
+    <h2 id="attack">Attack Cards <span class="c-red">(Red)</span></h2>
+    <p><strong>37 cards total.</strong> Your primary damage dealers.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Card</th><th>Mana</th><th>Damage</th><th>Effect</th></tr></thead>
+        <tbody>
+          {attackCards.map(c => (
+            <tr>
+              <td><strong class="c-red">{c.n}</strong></td>
+              <td style="text-align:center">{c.m}</td>
+              <td style="text-align:center">{c.d}</td>
+              <td style="color:var(--text-secondary)">{c.e}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    <h2 id="defense">Defense Cards (Blue)</h2>
-    <p>Generate Armor to protect your Crawlers. 7 cards total.</p>
-    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-blue-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
-      {[{n:'Armor',m:0,e:'Add 2 Armor'},{n:'Golden Armor',m:1,e:'Add 4 Armor'},{n:'Pummarola',m:1,e:'Recovery: Heal 2 after encounter'},{n:'Rainbow Armor',m:2,e:'Add 6 Armor'},{n:'Pummadora',m:2,e:'Recovery: Heal 4 after encounter'},{n:'Clock Lancet',m:3,e:'Apply 1 Freeze'},{n:'Hero\'s Armor',m:3,e:'Add 8 Armor'},{n:'Parm Aegis',m:'W',e:'Add 1 Armor (Wild)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-blue-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
-    </tbody></table></div>
+    <!-- Defense Cards -->
+    <h2 id="defense">Defense Cards <span class="c-blue">(Blue)</span></h2>
+    <p><strong>7 cards total.</strong> Generate Armor and provide healing.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Card</th><th>Mana</th><th>Effect</th></tr></thead>
+        <tbody>
+          {defenseCards.map(c => (
+            <tr>
+              <td><strong class="c-blue">{c.n}</strong></td>
+              <td style="text-align:center">{c.m}</td>
+              <td style="color:var(--text-secondary)">{c.e}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    <h2 id="stat">Stat Boost Cards (Yellow)</h2>
-    <p>Temporarily raise stats. Some are Destroy-type (one-time use per battle).</p>
-    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-yellow-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
-      {[{n:'Bracer',m:0,e:'Hand: Increase hand by 1'},{n:'Candle',m:0,e:'Area: Attacks deal 5% splash'},{n:'Skull O\'Maniac',m:0,e:'+10% enemy strength, gain bonus XP'},{n:'Spellbinder',m:0,e:'Duration: Crawlers trigger 2 more abilities'},{n:'Attractorb',m:1,e:'Draw 1 card'},{n:'Candella',m:1,e:'Area: Attacks deal 10% splash'},{n:'Crown',m:1,e:'Gain 15% XP Growth (Destroy)'},{n:'Hollow Heart',m:1,e:'Gain 3 Max Health (Destroy)'},{n:'Spinach',m:1,e:'Might: Deal 10% more damage'},{n:'Stone Mask',m:1,e:'Greed: Gain 10% more coins (Destroy)'},{n:'Candelabrador',m:2,e:'Area: Attacks deal 15% splash'},{n:'Clover',m:2,e:'Add 10% Luck'},{n:'Crystal Crown',m:2,e:'Gain 20% XP Growth (Destroy)'},{n:'Duplicator',m:2,e:'Amount: Fire 1 more projectile'},{n:'Du-Duplicator',m:2,e:'Amount: Fire 2 more projectiles'},{n:'Forever Heart',m:2,e:'Gain 1 Max Health'},{n:'Sprig o\' Spinach',m:2,e:'Might: Deal 20% more damage'},{n:'Tirajisu',m:2,e:'Revival: Gain 10% Revival (Destroy)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-yellow-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
-    </tbody></table></div>
+    <!-- Stat Boost Cards -->
+    <h2 id="stat">Stat Boost Cards <span class="c-yellow">(Yellow)</span></h2>
+    <p><strong>18 cards total.</strong> Temporarily raise stats. Some are Destroy-type (one use per battle).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Card</th><th>Mana</th><th>Effect</th></tr></thead>
+        <tbody>
+          {statCards.map(c => (
+            <tr>
+              <td><strong class="c-yellow">{c.n}</strong></td>
+              <td style="text-align:center">{c.m}</td>
+              <td style="color:var(--text-secondary)">{c.e}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    <h2 id="mana">Mana Cards (Purple)</h2>
-    <p>Generate Mana to play more cards. 6 cards total.</p>
-    <div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="bg-purple-900/50"><th class="p-2 text-left">Card</th><th class="p-2">Mana</th><th class="p-2 text-left">Effect</th></tr></thead><tbody>
-      {[{n:'Empty Tome',m:0,e:'Add 1 Mana'},{n:'Light Tome',m:1,e:'Add 2 Mana'},{n:'Weighty Tome',m:2,e:'Add 3 Mana'},{n:'Ancient Tome',m:3,e:'Add 4 Mana'},{n:'Song of Mana',m:4,e:'Deal 10 damage to multiple enemies, Raw Mana'},{n:'Wings',m:'W',e:'Reduce Mana cost of next card by 1 (Wild)'}].map(c => (<tr class="border-b border-gray-800 even:bg-gray-900/50"><td class="p-2 font-semibold text-purple-400">{c.n}</td><td class="p-2 text-center">{c.m}</td><td class="p-2 text-gray-400">{c.e}</td></tr>))}
-    </tbody></table></div>
+    <!-- Mana Cards -->
+    <h2 id="mana">Mana Cards <span class="c-purple">(Purple)</span></h2>
+    <p><strong>6 cards total.</strong> Generate Mana — the resource for playing cards.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Card</th><th>Mana</th><th>Effect</th></tr></thead>
+        <tbody>
+          {manaCards.map(c => (
+            <tr>
+              <td><strong class="c-purple">{c.n}</strong></td>
+              <td style="text-align:center">{c.m}</td>
+              <td style="color:var(--text-secondary)">{c.e}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
 
-    <h2 id="character">Character Cards (Teal)</h2>
-    <p>22 playable characters, each with unique card effects. See the <a href="/guides/characters-guide" class="text-red-400">Characters Guide</a> for full details.</p>
+    <!-- Character Cards -->
+    <h2 id="character">Character Cards <span class="c-teal">(Teal)</span></h2>
+    <p>22 playable characters, each with a unique card effect and trigger condition. See the <a href="/guides/characters-guide">Characters Guide</a> for full details including stats, effects, and unlock requirements.</p>
 
-    <div class="flex flex-wrap gap-3 mt-8 pt-4 border-t border-gray-800 text-sm">
-      <a href="/guides/characters-guide" class="text-red-400 hover:underline font-medium">Characters Guide →</a>
-      <a href="/guides/beginners-guide" class="text-red-400 hover:underline font-medium">Beginner's Guide →</a>
+    <!-- Wild Cards -->
+    <h2 id="wild">Wild &amp; Temporary Cards</h2>
+    <p><strong style="color:#ccc">Wild Cards (W cost)</strong> can be paid with any color mana. Examples: <em>Bracelet</em> (Attack, 100 dmg), <em>Parm Aegis</em> (Defense, +1 Armor), <em>Wings</em> (Mana, reduce next cost by 1).</p>
+    <p><strong style="color:#888">Temporary Cards</strong> appear during specific encounters or events. Usually black-bordered debuffs or one-time effects. Not collectible.</p>
+
+    <div class="bottom-nav">
+      <a href="/guides/beginners-guide">← Beginner's Guide</a>
+      <a href="/guides/characters-guide" class="next">Characters Guide →</a>
     </div>
   </article>
 </BaseLayout>
