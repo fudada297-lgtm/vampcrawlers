@@ -1,0 +1,33 @@
+---
+import { dungeons, chainColors } from '../../data/game-data';
+---
+
+<div class="not-content" style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
+  {Object.entries(chainColors).map(([chain, color]) => (
+    <span style="font-size:0.78rem;font-weight:600;display:flex;align-items:center;gap:0.35rem">
+      <span style={`display:inline-block;width:8px;height:8px;border-radius:50%;background:${color}`}></span>
+      {chain} Chain
+    </span>
+  ))}
+</div>
+
+<div class="not-content" style="display:flex;flex-direction:column;gap:0.5rem">
+  {dungeons.map((d, i) => (
+    <div style={`background:var(--sl-color-gray-6);border-left:3px solid ${chainColors[d.chain]};border-top:1px solid var(--sl-color-gray-5);border-right:1px solid var(--sl-color-gray-5);border-bottom:1px solid var(--sl-color-gray-5);border-radius:0 8px 8px 0;padding:1rem 1.25rem;display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem 1.5rem`}>
+      <div style={`display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:2px solid ${chainColors[d.chain]};color:${chainColors[d.chain]};font-weight:700;font-size:0.9rem;flex-shrink:0`}>{i+1}</div>
+      <div style="flex:1;min-width:200px">
+        <strong style="font-size:1rem;color:var(--sl-color-white)">{d.name}</strong>
+        <p style="font-size:0.85rem;color:var(--sl-color-gray-3);margin:0.15rem 0 0">
+          {d.unlock}{d.note ? ` &middot; ${d.note}` : ''}{d.boss ? ` &middot; Boss: <strong>${d.boss}</strong>` : ''}
+        </p>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:0.8rem;color:var(--sl-color-gray-2);margin-bottom:0.2rem">{'★'.repeat(d.diff)}{'☆'.repeat(9-d.diff)}</div>
+        {d.reward !== '—'
+          ? <span style="font-size:0.78rem;font-weight:600;color:var(--sl-color-white)">{d.reward}</span>
+          : <span style="font-size:0.75rem;color:var(--sl-color-gray-3)">No reward</span>
+        }
+      </div>
+    </div>
+  ))}
+</div>

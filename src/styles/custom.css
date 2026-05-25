@@ -1,0 +1,62 @@
+/* Vampire Crawlers custom styles for Starlight */
+
+/* Card color classes */
+.c-red { color: #e94560; font-weight: 600; }
+.c-blue { color: #3b82f6; font-weight: 600; }
+.c-yellow { color: #eab308; font-weight: 600; }
+.c-purple { color: #a855f7; font-weight: 600; }
+.c-teal { color: #14b8a6; font-weight: 600; }
+.c-gold { color: #f0a500; font-weight: 600; }
+
+/* Table improvements */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+.table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.table-wrap thead th {
+  background: var(--sl-color-gray-6);
+  color: var(--sl-color-white);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid var(--sl-color-accent);
+  white-space: nowrap;
+}
+.table-wrap tbody td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--sl-color-gray-5);
+  color: var(--sl-color-gray-3);
+}
+.table-wrap tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+/* Card hover animations */
+a[href^="/guides/"] {
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+a[href^="/guides/"]:hover {
+  border-color: var(--sl-color-accent) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(233,69,96,0.1);
+  text-decoration: none !important;
+}
+
+/* Accent customization */
+:root {
+  --sl-color-accent: #e94560;
+  --sl-color-accent-high: #f25a72;
+  --sl-hue-accent: 352;
+  --sl-color-accent-low: rgba(233,69,96,0.12);
+}
+
+/* Typography tweaks for game content */
+.sl-markdown-content h1 { color: var(--sl-color-white); }
+.sl-markdown-content h2 { border-bottom: 1px solid var(--sl-color-gray-5); padding-bottom: 0.4rem; margin-top: 2rem; }
+
+/* Sidebar active state override */
+:root {
+  --sl-color-accent: #e94560;
+}
+
+/* Dynamic accent for light mode */
+:root[data-theme="light"] {
+  --sl-color-accent: #d63031;
+  --sl-color-accent-high: #e94560;
+}

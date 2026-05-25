@@ -1,0 +1,69 @@
+---
+import { attackCards, defenseCards, statCards, manaCards } from '../../data/game-data';
+import type { AttackCard, DefenseCard, StatCard, ManaCard } from '../../data/game-data';
+
+interface Props {
+  type: 'attack' | 'defense' | 'stat' | 'mana';
+}
+
+const { type } = Astro.props;
+
+const colors: Record<string, { label: string; cssClass: string }> = {
+  attack: { label: 'Attack', cssClass: 'c-red' },
+  defense: { label: 'Defense', cssClass: 'c-blue' },
+  stat: { label: 'Stat Boost', cssClass: 'c-yellow' },
+  mana: { label: 'Mana', cssClass: 'c-purple' },
+};
+
+const info = colors[type];
+---
+
+<div class="table-wrap not-content">
+  <table>
+    <thead>
+      {type === 'attack' && (
+        <tr><th>Card</th><th>Mana</th><th>Damage</th><th>Effect</th></tr>
+      )}
+      {type === 'defense' && (
+        <tr><th>Card</th><th>Mana</th><th>Effect</th></tr>
+      )}
+      {type === 'stat' && (
+        <tr><th>Card</th><th>Mana</th><th>Effect</th></tr>
+      )}
+      {type === 'mana' && (
+        <tr><th>Card</th><th>Mana</th><th>Effect</th></tr>
+      )}
+    </thead>
+    <tbody>
+      {type === 'attack' && attackCards.map(c => (
+        <tr>
+          <td><strong class="c-red">{c.n}</strong></td>
+          <td style="text-align:center">{c.m}</td>
+          <td style="text-align:center">{c.d}</td>
+          <td style="color:var(--sl-color-gray-3)">{c.e}</td>
+        </tr>
+      ))}
+      {type === 'defense' && defenseCards.map(c => (
+        <tr>
+          <td><strong class="c-blue">{c.n}</strong></td>
+          <td style="text-align:center">{c.m}</td>
+          <td style="color:var(--sl-color-gray-3)">{c.e}</td>
+        </tr>
+      ))}
+      {type === 'stat' && statCards.map(c => (
+        <tr>
+          <td><strong class="c-yellow">{c.n}</strong></td>
+          <td style="text-align:center">{c.m}</td>
+          <td style="color:var(--sl-color-gray-3)">{c.e}</td>
+        </tr>
+      ))}
+      {type === 'mana' && manaCards.map(c => (
+        <tr>
+          <td><strong class="c-purple">{c.n}</strong></td>
+          <td style="text-align:center">{c.m}</td>
+          <td style="color:var(--sl-color-gray-3)">{c.e}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

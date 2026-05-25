@@ -1,0 +1,12 @@
+---
+import { faqs } from '../../data/game-data';
+---
+
+<div class="not-content">
+  {faqs.map((f, i) => (
+    <div style="margin-bottom:1.5rem">
+      <h2 style="font-size:1.05rem;font-weight:700;color:var(--sl-color-white);margin-bottom:0.5rem">{i+1}. {f.q}</h2>
+      <p style="color:var(--sl-color-gray-3);line-height:1.7" set:html={f.a} />
+    </div>
+  ))}
+</div>

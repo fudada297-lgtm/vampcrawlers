@@ -1,0 +1,51 @@
+---
+const guides = [
+  { icon: '🎓', title: "Beginner's Guide", desc: 'New to Vampire Crawlers? Learn the turn-based deckbuilder basics, combat mechanics, and early game strategy.', slug: 'beginners-guide', color: '#3b82f6' },
+  { icon: '🃏', title: 'Cards List', desc: 'Complete catalog: 37 Attack, 7 Defense, 6 Mana, 18 Stat Boost cards with mana costs and effects.', slug: 'cards-list', color: '#e94560' },
+  { icon: '👤', title: 'Characters', desc: 'All 22 characters with stats, Crawler effects, trigger conditions, and unlock requirements.', slug: 'characters-guide', color: '#22c55e' },
+  { icon: '💎', title: 'Relics Guide', desc: '15 permanent relics with effects and dungeon locations. Essential for progression.', slug: 'relics-guide', color: '#f0a500' },
+  { icon: '🗺️', title: 'Dungeons', desc: 'All 15 stages with difficulty ratings, unlock requirements, boss info, and rewards.', slug: 'dungeons-guide', color: '#a855f7' },
+  { icon: '🔓', title: 'Unlock Guide', desc: 'How to unlock every character, relic, and stage in one place.', slug: 'unlock-guide', color: '#14b8a6' },
+  { icon: '❓', title: 'FAQ', desc: 'Frequently asked questions about Vampire Crawlers game mechanics and progression.', slug: 'faq', color: '#3b82f6' },
+];
+---
+
+<div class="not-content" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin:2rem 0">
+  {guides.map(g => (
+    <a href={`/guides/${g.slug}`} style={`display:block;background:var(--sl-color-gray-6);border:1px solid var(--sl-color-gray-5);border-radius:8px;padding:1.25rem;text-decoration:none;transition:border-color 0.2s,transform 0.15s`}>
+      <span style="font-size:1.5rem">{g.icon}</span>
+      <h3 style="font-size:0.95rem;font-weight:700;color:var(--sl-color-white);margin:0.5rem 0 0.35rem">{g.title}</h3>
+      <p style="font-size:0.82rem;color:var(--sl-color-gray-3);margin:0;line-height:1.5">{g.desc}</p>
+    </a>
+  ))}
+</div>
+
+<div style="background:var(--sl-color-gray-6);border:1px solid var(--sl-color-gray-5);border-radius:8px;padding:1.5rem 2rem;margin-top:0.5rem" class="not-content">
+  <h2 style="font-size:1.15rem;font-weight:700;color:var(--sl-color-white);margin:0 0 1rem">Game Overview</h2>
+  <p style="color:var(--sl-color-gray-3);font-size:0.9rem;line-height:1.7;margin:0">
+    Vampire Crawlers is a casual turn-based deckbuilder with roguelite elements from <strong>poncle</strong>, the creators of Vampire Survivors. Build decks, explore dungeons, and unleash powerful combos. The game features six card types —
+    <span class="c-red">Attack (Red)</span>,
+    <span class="c-blue">Defense (Blue)</span>,
+    <span class="c-yellow">Stat Boost (Yellow)</span>,
+    <span class="c-purple">Mana (Purple)</span>,
+    <span class="c-teal">Character (Teal)</span>, and
+    <span style="color:#ccc">Wild (White)</span>.
+    Progress through 15 dungeons, unlock 22 characters, and collect 15 permanent relics.
+  </p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:0.75rem;margin-top:1.25rem">
+    {[
+      ['37','Attack Cards'],['7','Defense Cards'],['6','Mana Cards'],['18','Stat Boost Cards'],
+      ['22','Characters'],['15','Relics'],['15','Dungeons'],['6','Card Types'],
+    ].map(([v, l]) => (
+      <div style="text-align:center">
+        <div style="font-size:1.5rem;font-weight:800;color:var(--sl-color-white)">{v}</div>
+        <div style="font-size:0.7rem;color:var(--sl-color-gray-3)">{l}</div>
+      </div>
+    ))}
+  </div>
+
+  <div style="margin-top:1.25rem;padding:0.75rem 1rem;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);border-radius:6px">
+    <strong style="color:#22c55e">Combo Stack</strong> — the most important beginner relic. Play cards in <em>ascending mana cost order</em> for a growing damage multiplier. Low-cost cards first, then ramp to finishers.
+  </div>
+</div>

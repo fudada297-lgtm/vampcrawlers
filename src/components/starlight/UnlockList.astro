@@ -1,0 +1,25 @@
+---
+import { unlockSections } from '../../data/game-data';
+---
+
+<div class="not-content">
+  {unlockSections.map(s => (
+    <div style="margin-bottom:2rem">
+      <h2 style="font-size:1.2rem;font-weight:700;color:var(--sl-color-white);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem">
+        <span>{s.icon}</span> {s.title}
+        <span style="font-size:0.78rem;color:var(--sl-color-gray-3);font-weight:400">({s.items.length} total)</span>
+      </h2>
+      <div style="background:var(--sl-color-gray-6);border:1px solid var(--sl-color-gray-5);border-radius:8px;padding:1rem 1.25rem">
+        <div style="display:flex;flex-direction:column;gap:0.35rem">
+          {s.items.map(item => (
+            <div style="display:flex;align-items:baseline;gap:0.75rem;padding:0.35rem 0;border-bottom:1px solid var(--sl-color-gray-5);font-size:0.9rem">
+              <span style="color:var(--sl-color-gray-3);font-size:0.6rem;flex-shrink:0;margin-top:0.25rem">&diams;</span>
+              <strong style="min-width:140px;flex-shrink:0;color:var(--sl-color-white)">{item.item}</strong>
+              <span style="color:var(--sl-color-gray-3)">{item.cond}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
