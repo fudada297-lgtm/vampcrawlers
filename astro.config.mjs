@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   site: 'https://vampcrawlers.cc',
+  adapter: cloudflare(),
   integrations: [
     starlight({
       title: 'Vampire Crawlers Wiki',
