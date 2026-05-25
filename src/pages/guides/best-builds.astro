@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Best Builds — Top Decks & Card Combinations (2026)';
+const description = 'The best Vampire Crawlers builds and deck compositions. Blood DPS, Frost Control, Shadow Assassin, Lightning Burst builds with card lists and strategies.';
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/best-builds">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Vampire Crawlers Best Builds Guide",
+    "description": "${description}"
+  }`} />
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Best Builds</h1>
+    <p class="text-gray-400 mb-8">Top-tier deck builds for every playstyle — Blood DPS, Frost Control, Shadow Assassin, and Lightning Burst.</p>
+
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6 space-y-8 text-gray-300 leading-relaxed">
+
+      <!-- Blood Build -->
+      <section>
+        <h2 class="text-xl font-bold text-red-400 mb-3">1. Blood DPS Build (S-Tier)</h2>
+        <p><strong>Best for:</strong> Endless Mode & Boss rushing. Extremely high sustain and consistent damage.</p>
+        <div class="bg-gray-800 rounded-lg p-4 my-3">
+          <p class="text-sm text-gray-400 mb-2"><strong>Core Cards:</strong></p>
+          <ul class="list-disc pl-5 space-y-0.5 text-sm">
+            <li>Crimson Slash x2 — Main damage dealer, health steal</li>
+            <li>Blood Surge — AoE damage that scales with missing HP</li>
+            <li>Vampiric Strike — Heals for 50% of damage dealt</li>
+            <li>Hemorrhage — DoT that stacks up to 5 times</li>
+            <li>Blood Pact — Sacrifice 10% HP for 50% damage boost</li>
+          </ul>
+          <p class="text-sm text-gray-400 mt-2"><strong>Key Relics:</strong> Vampire Fang, Crimson Chalice, Bleeding Heart</p>
+        </div>
+      </section>
+
+      <!-- Frost Build -->
+      <section>
+        <h2 class="text-xl font-bold text-blue-400 mb-3">2. Frost Control Build (A-Tier)</h2>
+        <p><strong>Best for:</strong> High difficulty floors. Freezes enemies and controls the battlefield.</p>
+        <div class="bg-gray-800 rounded-lg p-4 my-3">
+          <p class="text-sm text-gray-400 mb-2"><strong>Core Cards:</strong></p>
+          <ul class="list-disc pl-5 space-y-0.5 text-sm">
+            <li>Ice Shard x2 — Fast projectile, 30% freeze chance</li>
+            <li>Blizzard — AoE frost damage over 5 seconds</li>
+            <li>Frost Nova — Instant freeze all nearby enemies</li>
+            <li>Frozen Armor — Gain shield based on frozen enemies</li>
+            <li>Shatter — 3x damage to frozen targets</li>
+          </ul>
+          <p class="text-sm text-gray-400 mt-2"><strong>Key Relics:</strong> Frost Crystal, Ice Crown, Permafrost Ring</p>
+        </div>
+      </section>
+
+      <!-- Shadow Build -->
+      <section>
+        <h2 class="text-xl font-bold text-purple-400 mb-3">3. Shadow Assassin Build (A-Tier)</h2>
+        <p><strong>Best for:</strong> Speed clearing. High burst damage, low survivability. Skill-dependent.</p>
+        <div class="bg-gray-800 rounded-lg p-4 my-3">
+          <p class="text-sm text-gray-400 mb-2"><strong>Core Cards:</strong></p>
+          <ul class="list-disc pl-5 space-y-0.5 text-sm">
+            <li>Shadow Strike x2 — Teleport behind enemy + bonus damage</li>
+            <li>Dark Blade — Ignore 30% defense, crits deal double</li>
+            <li>Vanish — Brief invulnerability, next attack crits</li>
+            <li>Mark of Death — Target takes 40% more damage</li>
+          </ul>
+          <p class="text-sm text-gray-400 mt-2"><strong>Key Relics:</strong> Shadow Cloak, Assassin's Dagger, Night Pendant</p>
+        </div>
+      </section>
+
+      <!-- Lightning Build -->
+      <section>
+        <h2 class="text-xl font-bold text-yellow-400 mb-3">4. Lightning Burst Build (B-Tier)</h2>
+        <p><strong>Best for:</strong> Clearing trash mobs. Fast-paced, chain lightning clears screens.</p>
+        <div class="bg-gray-800 rounded-lg p-4 my-3">
+          <p class="text-sm text-gray-400 mb-2"><strong>Core Cards:</strong></p>
+          <ul class="list-disc pl-5 space-y-0.5 text-sm">
+            <li>Chain Lightning — Hits 4 enemies, bounces between targets</li>
+            <li>Storm Call — Summon lightning strikes for 8 seconds</li>
+            <li>Overcharge — Double lightning damage, take 25% more damage</li>
+            <li>Static Field — Passive AoE damage aura</li>
+          </ul>
+          <p class="text-sm text-gray-400 mt-2"><strong>Key Relics:</strong> Storm Gem, Tesla Coil, Conductor's Rod</p>
+        </div>
+      </section>
+
+      <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-3 text-sm">
+        <span class="text-gray-500">More guides:</span>
+        <a href="/guides/beginners-guide" class="text-red-400 hover:underline">Beginner's Guide</a>
+        <a href="/guides/cards-tier-list" class="text-red-400 hover:underline">Cards Tier List</a>
+        <a href="/guides/card-combos" class="text-red-400 hover:underline">Card Combos</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

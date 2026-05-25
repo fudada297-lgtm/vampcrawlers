@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Cards Tier List — All Cards Ranked S to D (2026)';
+const description = 'Complete Vampire Crawlers card tier list. Every card ranked from S-Tier to D-Tier with explanations. Find the best cards for your deck.';
+
+const tiers = [
+  { tier: 'S', color: 'text-yellow-400', desc: 'Must-take in every run. Run-defining power level.', cards: ['Crimson Slash', 'Blood Surge', 'Shadow Strike', 'Ice Shard', 'Chain Lightning', 'Vampiric Strike'] },
+  { tier: 'A', color: 'text-green-400', desc: 'Strong and consistent. Build-arounds for specific archetypes.', cards: ['Blizzard', 'Frost Nova', 'Dark Blade', 'Vanish', 'Hemorrhage', 'Storm Call', 'Frozen Armor', 'Blood Pact'] },
+  { tier: 'B', color: 'text-blue-400', desc: 'Solid picks. Good filler that supports your build.', cards: ['Shatter', 'Mark of Death', 'Overcharge', 'Static Field', 'Shadow Bolt', 'Flame Slash', 'Crippling Strike', 'Energy Drain', 'Fortify', 'Iron Will'] },
+  { tier: 'C', color: 'text-gray-400', desc: 'Situational. Decent in specific builds, skippable otherwise.', cards: ['Fireball', 'Poison Dart', 'Healing Light', 'Stone Skin', 'Thunder Clap', 'Gust', 'Bone Armor', 'Life Tap'] },
+  { tier: 'D', color: 'text-red-400', desc: 'Underpowered. Avoid unless no other options.', cards: ['Spark', 'Pebble Toss', 'Weak Strike', 'Minor Heal', 'Flare'] },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/cards-tier-list">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Vampire Crawlers Cards Tier List",
+    "description": "${description}"
+  }`} />
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Cards Tier List</h1>
+    <p class="text-gray-400 mb-8">All cards ranked by power level. Updated for the May 2026 patch.</p>
+
+    <div class="space-y-6">
+      {tiers.map((t) => (
+        <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+          <h2 class="text-lg font-bold mb-1"><span class={t.color}>{t.tier}-Tier</span> <span class="text-gray-500 text-sm font-normal">— {t.desc}</span></h2>
+          <div class="flex flex-wrap gap-2 mt-3">
+            {t.cards.map(card => (
+              <span class="bg-gray-800 text-gray-300 px-3 py-1 rounded-lg text-sm">{card}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mt-6">
+      <h2 class="text-lg font-bold text-white mb-2">How We Rank Cards</h2>
+      <ul class="list-disc pl-5 space-y-1 text-gray-400 text-sm">
+        <li><strong>Power Level</strong> — Raw damage, shield, or healing output per energy spent</li>
+        <li><strong>Flexibility</strong> — How well the card fits into multiple builds</li>
+        <li><strong>Synergy Potential</strong> — Elemental and relic interactions</li>
+        <li><strong>Floor Relevance</strong> — Performance across early, mid, and late game</li>
+      </ul>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+      <span class="text-gray-500">More guides:</span>
+      <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
+      <a href="/guides/card-combos" class="text-red-400 hover:underline">Card Combos</a>
+      <a href="/guides/beginners-guide" class="text-red-400 hover:underline">Beginner's Guide</a>
+    </div>
+  </article>
+</BaseLayout>

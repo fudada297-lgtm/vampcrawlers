@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Beginner\'s Guide — Tips, Tricks & Getting Started (2026)';
+const description = 'Complete beginner\'s guide to Vampire Crawlers. Learn the basics: how cards work, combat mechanics, early game strategy, unlocking characters, and surviving your first runs.';
+---
+
+<BaseLayout title={title} description={description} canonical="https://vampcrawlers.cc/guides/beginners-guide">
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Vampire Crawlers Beginner's Guide",
+    "description": "${description}",
+    "datePublished": "2026-05-23"
+  }`} />
+
+  <article class="max-w-4xl mx-auto px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2">Vampire Crawlers Beginner's Guide</h1>
+    <p class="text-gray-400 mb-8">Everything new players need to know to survive and thrive in poncle's roguelike deckbuilder.</p>
+
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6 mb-6 space-y-5 text-gray-300 leading-relaxed">
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">What Is Vampire Crawlers?</h2>
+        <p>Vampire Crawlers is a roguelike deckbuilder action game by poncle (creators of Vampire Survivors). Released in April 2026, it merges card-based combat with bullet heaven mechanics. You build a deck of cards, each representing attacks, defenses, or abilities, and fight through waves of enemies in procedurally generated dungeons.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Getting Started: The Basics</h2>
+
+        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">1. Understanding Cards</h3>
+        <p>Cards are your primary tool in Vampire Crawlers. Each card has:</p>
+        <ul class="list-disc pl-5 space-y-1 mt-2">
+          <li><strong>Energy Cost</strong> — How much energy it takes to play the card. You regenerate energy over time.</li>
+          <li><strong>Effect</strong> — What the card does: deal damage, heal, summon minions, apply buffs/debuffs.</li>
+          <li><strong>Element</strong> — Fire, Ice, Shadow, Blood, or Lightning. Elemental synergies are critical for advanced builds.</li>
+          <li><strong>Rarity</strong> — Common, Uncommon, Rare, Epic, Legendary. Higher rarity = more powerful effects.</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">2. Combat Flow</h3>
+        <p>Combat is real-time. Enemies spawn in waves, and you play cards to defeat them while dodging their attacks. Your deck cycles automatically — when you run out of cards, it reshuffles. Key combat tips:</p>
+        <ul class="list-disc pl-5 space-y-1 mt-2">
+          <li>Don't hoard cards — play them as soon as you have energy</li>
+          <li>Keep moving — standing still gets you killed</li>
+          <li>Watch enemy attack patterns — most are telegraphed with red indicators</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold text-red-400 mt-4 mb-2">3. The Dungeon Crawl Loop</h3>
+        <p>Each run consists of multiple floors. Clear a floor to advance. Between floors, you can:</p>
+        <ul class="list-disc pl-5 space-y-1 mt-2">
+          <li><strong>Pick new cards</strong> to add to your deck</li>
+          <li><strong>Upgrade existing cards</strong> at the Forge</li>
+          <li><strong>Heal</strong> at Blood Altars (costs gold)</li>
+          <li><strong>Buy relics</strong> from the Merchant for passive bonuses</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Early Game Strategy</h2>
+        <ol class="list-decimal pl-5 space-y-2 mt-2">
+          <li><strong>Start with Bloodfang</strong> — the starting character has balanced stats and a simple deck, perfect for learning.</li>
+          <li><strong>Prioritize AoE cards</strong> early — they clear groups of weak enemies fast.</li>
+          <li><strong>Grab one healing card</strong> by floor 3 — sustainability matters more than raw damage early on.</li>
+          <li><strong>Don't skip relic rooms</strong> — relics provide permanent passive bonuses that scale through the entire run.</li>
+          <li><strong>Thin your deck when possible</strong> — removing weak starting cards at the Forge makes your deck more consistent.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">First Character: Bloodfang</h2>
+        <p>Bloodfang is the default starting character with a Blood-element starter deck. His passive ability, <strong>Crimson Recovery</strong>, heals you for 2 HP every time you play a Blood card. Build around Blood synergy cards for maximum sustain.</p>
+        <p class="mt-2">Once you clear floor 10 with Bloodfang, you unlock the next character: <strong>Frostveil</strong>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-white mb-3">Common Beginner Mistakes</h2>
+        <ul class="list-disc pl-5 space-y-1 mt-2">
+          <li><strong>Bloat</strong> — Taking every card offered. A lean 15-20 card deck is stronger than a bloated 35-card deck.</li>
+          <li><strong>Ignoring relics</strong> — Relics are run-defining. Always visit relic rooms.</li>
+          <li><strong>One-element obsession</strong> — While elemental synergy is powerful, having a secondary element covers weaknesses.</li>
+          <li><strong>Standing still</strong> — Movement is defense. Always be repositioning.</li>
+        </ul>
+      </section>
+
+      <div class="mt-6 pt-4 border-t border-gray-800 flex flex-wrap gap-3 text-sm">
+        <span class="text-gray-500">More guides:</span>
+        <a href="/guides/best-builds" class="text-red-400 hover:underline">Best Builds</a>
+        <a href="/guides/cards-tier-list" class="text-red-400 hover:underline">Cards Tier List</a>
+        <a href="/guides/boss-guide" class="text-red-400 hover:underline">Boss Guide</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Vampire Crawlers Guide — Best Builds, Cards, Tips & Walkthroughs';
+const description = 'The ultimate Vampire Crawlers guide. Best builds, card tier list, beginner tips, boss strategies, and complete walkthroughs. Updated for 2026.';
+
+const featuredGuides = [
+  { title: 'Beginner\'s Guide', desc: 'Everything you need to know to survive your first runs in Vampire Crawlers.', slug: 'beginners-guide' },
+  { title: 'Best Builds & Decks', desc: 'Top-tier card combinations and builds to dominate the dungeon.', slug: 'best-builds' },
+  { title: 'Cards Tier List', desc: 'Every card ranked — S-tier to D-tier with detailed explanations.', slug: 'cards-tier-list' },
+  { title: 'How to Unlock All Characters', desc: 'Complete guide to unlocking every playable character.', slug: 'unlock-characters' },
+  { title: 'Boss Strategy Guide', desc: 'How to beat every boss in Vampire Crawlers with optimized strategies.', slug: 'boss-guide' },
+  { title: 'Card Combos & Synergies', desc: 'The most powerful card combinations and elemental synergies.', slug: 'card-combos' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={`{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vampire Crawlers Guide",
+    "url": "https://vampcrawlers.cc",
+    "description": "${description}"
+  }`} />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-red-900/30 to-gray-950 border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-4 py-16 md:py-20 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Vampire Crawlers <span class="text-red-500">Guide</span></h1>
+      <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-2">The ultimate resource for builds, cards, strategies, and walkthroughs.</p>
+      <p class="text-sm text-gray-500">Poncle's roguelike deckbuilder — 1M+ players. Free guides, updated for 2026.</p>
+    </div>
+  </section>
+
+  <!-- Guides grid -->
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold text-white mb-6">All Guides</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {featuredGuides.map(g => (
+        <a href={`/guides/${g.slug}`} class="block bg-gray-900 border border-gray-800 hover:border-red-500/50 rounded-xl p-5 transition-colors group">
+          <h3 class="font-semibold text-white group-hover:text-red-400 transition-colors mb-2">{g.title}</h3>
+          <p class="text-sm text-gray-500">{g.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Game info -->
+  <div class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-white mb-3">About Vampire Crawlers</h2>
+      <p class="text-gray-400 leading-relaxed">Vampire Crawlers is a roguelike deckbuilding action game from poncle, the creators of Vampire Survivors. Released April 2026, it combines card-based combat with the bullet heaven survivor genre. Build your deck, chain powerful combos, and crawl through endless dungeons. With over 100 cards, 12+ playable characters, and deep synergy systems, mastering the game requires understanding card interactions, optimal builds, and boss patterns.</p>
+    </div>
+  </div>
+</BaseLayout>
