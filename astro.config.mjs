@@ -13,6 +13,7 @@ export default defineConfig({
       customCss: ['./src/styles/custom.css'],
       head: [
         { tag: 'meta', attrs: { name: 'google-site-verification', content: 'sw34vYyOTUEY2kP15vaIi540JMs1M7XHALaWKmASaMo' } },
+        { tag: 'script', attrs: { async: true, src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5040682133048728', crossorigin: 'anonymous' } },
       ],
       sidebar: [
         { label: 'Guides', items: [
